@@ -67,3 +67,4 @@
 # IDE config
 .idea
 .vscode
+/.drush-lock-update
