@@ -1,0 +1,5 @@
+# Schema for the configuration files of the Bootstrap Barrio Subtheme.
+
+provus.settings:
+  type: provus.settings
+  label: 'Provus settings'

@@ -1,0 +1,45 @@
+# Library.
+# ----------------------------
+provus_library: 'production'
+# Layout.
+# ----------------------------
+provus_sidebar_position: 'both'
+provus_content_offset: 0
+provus_sidebar_first_width: 4
+provus_sidebar_first_offset: 0
+provus_sidebar_second_width: 3
+provus_sidebar_second_offset: 0
+
+# Container.
+# ----------------------------
+provus_fluid_container: 0
+
+# Buttons.
+# ----------------------------
+provus_button: 1
+provus_button_size: ''
+provus_button_outline: 0
+
+# Navbar.
+# ----------------------------
+provus_navbar_toggle: 'navbar-toggleable-lg'
+provus_navbar_container: ''
+provus_navbar_top_position: ''
+provus_navbar_top_color: ''
+provus_navbar_top_background: ''
+provus_navbar_position: ''
+provus_navbar_color: ''
+provus_navbar_background: ''
+
+# Messages.
+# ----------------------------
+provus_messages_widget: 'alerts'
+
+# Colors.
+# ----------------------------
+provus_system_messages: 'messages_white'
+
+# Tables.
+# ----------------------------
+provus_table_hover: 1
+provus_table_style: 'table-striped'
