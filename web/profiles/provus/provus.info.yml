@@ -22,7 +22,7 @@ distribution:
   #
   # install:
   #   theme: my_theme
-  #   # To redirect to specific URL after profile installation set your finish_url: 
+  #   # To redirect to specific URL after profile installation set your finish_url:
   #   finish_url: ?welcome=1
   langcode: en
 
@@ -64,5 +64,7 @@ dependencies:
 # List any themes that should be installed as part of the profile installation.
 # Note that this will not set any theme as the default theme.
 themes:
+  - bootstrap_barrio
+  - bootstrap_sass
   - gin
   - provus
