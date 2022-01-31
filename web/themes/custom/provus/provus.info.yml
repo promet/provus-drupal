@@ -1,15 +1,17 @@
-name: Provus Core Base Theme
+name: Provus
 type: theme
-description: 'Basic structure for a Provus site, based on Bootstrap Barrio.'
+description: 'SASS starter kit for a Bootstrap Barrio SubTheme.'
+# version: VERSION
 core: 8.x
 core_version_requirement: ^8 || ^9
 base theme: bootstrap_barrio
 
 libraries:
-  - provus/bootstrap_cdn
   - provus/global-styling
-
+libraries-override:
+  bootstrap_barrio/global-styling: false
 regions:
+  alert_banner: 'Alert Banner'
   top_header: 'Top header'
   top_header_form: 'Top header form'
   header: Header
@@ -33,4 +35,7 @@ regions:
   footer_fourth: 'Footer fourth'
   footer_fifth: 'Footer fifth'
 
-
+# Information added by Drupal.org packaging script on 2021-10-11
+version: '5.0.5'
+project: 'provus'
+datestamp: 1633918678

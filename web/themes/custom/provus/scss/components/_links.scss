@@ -1,0 +1,27 @@
+a {
+  color: $secondary-shade;
+  text-decoration: underline;
+  &:hover,
+  &:focus {
+    color: $primary-shade;
+    text-decoration: none;
+  }
+}
+
+// Node Teaser
+.node--view-mode-teaser h2 a {
+  color: $heading;
+  &:hover,
+  &:focus {
+    color: $primary-shade;
+  }
+}
+
+// List
+.list-group-item {
+  color: $secondary-shade;
+  &:hover,
+  &:focus {
+    color: $primary-shade;
+  }
+}

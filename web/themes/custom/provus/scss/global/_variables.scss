@@ -1,0 +1,102 @@
+/* VARIABLES */
+
+// Variables to change at start of projects
+@import url('https://fonts.googleapis.com/css?family=Montserrat:100,200,300,400,500,600,700,800,900&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Lato:100,300,400,700,900&display=swap');
+$font-body: 'Lato', sans-serif;
+$font-heading: 'Montserrat', sans-serif;
+$primary-shade: #31227C;
+$secondary-shade: #DA3807;
+$accent-shade: #FD5809;
+$space: 1rem;
+$font-size-base: 1rem;
+
+// colors
+$primary-light: lighten($primary-shade, 37%);
+$primary-dark: darken($primary-shade, 12%);
+$secondary-light: lighten($secondary-shade, 37%);
+$secondary-dark: darken($secondary-shade, 12%);
+$accent-light: lighten($accent-shade, 37%);
+$accent-dark: darken($accent-shade, 12%);
+
+// Grayscale
+$white: white;
+$gray-lightest: #eaeaea;
+$gray-light: #747474;
+$gray: #666;
+$gray-dark: #1d2b36;
+$gray-darker: #333;
+$gray-medium: #556575;
+$black: #15191B;
+
+// Tables
+$table-gray: #f8f8f8;
+$table-border: $gray;
+
+// Reassign color vars to semantic color scheme
+$red: #dc3545;
+$yellow: #ffc107;
+$green: #28a745;
+$cyan: #17a2b8;
+$white: #fff;
+$gray-100: #f8f9fa;
+$gray-800: #343a40;
+$theme-colors: ( primary: $accent-shade, secondary: $primary-shade, success: $green, info: $cyan, warning: $yellow, danger: $red, light: $gray-100, dark: $gray-800);
+$brand-primary: $primary-shade;
+$brand-inverse: $secondary-shade;
+
+// Body
+// Settings for the `<body>` element.
+$body-bg: $white;
+$body-color: $gray-800;
+$inverse-bg: $primary-shade;
+$inverse-color: $white;
+$heading: $gray-dark;
+
+// Links
+// Style anchor elements.
+$link-color: $accent-shade;
+$link-decoration: none;
+$link-hover-color: $accent-dark;
+$link-hover-decoration: underline;
+
+// Comments
+$comment-spacer-x: 1.25em;
+$comment-spacer-y: 1.25em;
+
+// Responsive font sizes
+$enable-responsive-font-sizes: true;
+$enable-shadows: false;
+$enable-gradients: false;
+// Breadcrumbs (Works only on Bootstrap 5+)
+// $breadcrumb-divider: quote(">");
+
+$color-border: $accent-shade;
+
+// Provus global variables
+
+// Font size
+$font-size-lg: $font-size-base * 1.25;
+$font-size-sm: $font-size-base * .875;
+$font-size-xs: $font-size-base * .75;
+$font-weight-normal: normal;
+$font-weight-bold: bold;
+$font-weight-base: $font-weight-normal;
+$line-height-base: 1.5;
+$h1-font-size: $font-size-base * 2.5;
+$h2-font-size: $font-size-base * 2;
+$h3-font-size: $font-size-base * 1.75;
+$h4-font-size: $font-size-base * 1.5;
+$h5-font-size: $font-size-base * 1.25;
+$h6-font-size: $font-size-base;
+
+// Spacing
+$comment-spacer-x: 1.25em;
+$comment-spacer-y: 1.25em;
+$space-onepointfive: $space*1.5;
+$space-double: $space*2;
+$space-triple: $space*3;
+$space-quadruple: $space*4;
+$space-quintuple: $space*5;
+$space-sextuple: $space*6;
+$space-septuple: $space*7;
