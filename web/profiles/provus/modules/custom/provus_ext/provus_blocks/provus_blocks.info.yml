@@ -10,3 +10,7 @@ dependencies:
   - drupal:system
   - drupal:text
   - layout_builder
+  - inline_entity_form
+  - ala
+  - media
+  - media_library
