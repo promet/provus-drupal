@@ -1,0 +1,21 @@
+uuid: 743d446f-e20d-4649-bd31-20e4bfc6d869
+langcode: en
+status: true
+dependencies:
+  module:
+    - search
+  theme:
+    - provus
+id: searchform
+theme: provus
+region: header_form
+weight: -7
+provider: null
+plugin: search_form_block
+settings:
+  id: search_form_block
+  label: 'Search form'
+  label_display: '0'
+  provider: search
+  page_id: ''
+visibility: {  }

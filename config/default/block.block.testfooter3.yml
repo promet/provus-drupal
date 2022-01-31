@@ -1,0 +1,25 @@
+uuid: 145dd46c-b49b-49de-871f-26af5b1ca7ce
+langcode: en
+status: true
+dependencies:
+  content:
+    - 'block_content:basic:f27d1907-6899-442e-8d05-7a7a589c58ea'
+  module:
+    - block_content
+  theme:
+    - provus
+id: testfooter3
+theme: provus
+region: footer_third
+weight: 0
+provider: null
+plugin: 'block_content:f27d1907-6899-442e-8d05-7a7a589c58ea'
+settings:
+  id: 'block_content:f27d1907-6899-442e-8d05-7a7a589c58ea'
+  label: 'test footer 3'
+  label_display: '0'
+  provider: block_content
+  status: true
+  info: ''
+  view_mode: full
+visibility: {  }

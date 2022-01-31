@@ -1,0 +1,25 @@
+uuid: ed579bb8-83d5-4933-92c7-b765aacfd6d8
+langcode: en
+status: true
+dependencies:
+  content:
+    - 'block_content:basic:c6a4be4d-7d67-4bc0-950b-b6ff809e9cda'
+  module:
+    - block_content
+  theme:
+    - provus
+id: customalert1
+theme: provus
+region: alert_banner
+weight: 0
+provider: null
+plugin: 'block_content:c6a4be4d-7d67-4bc0-950b-b6ff809e9cda'
+settings:
+  id: 'block_content:c6a4be4d-7d67-4bc0-950b-b6ff809e9cda'
+  label: 'Custom Alert 1'
+  label_display: '0'
+  provider: block_content
+  status: true
+  info: ''
+  view_mode: full
+visibility: {  }

@@ -1,0 +1,22 @@
+uuid: c19c78f7-b451-4f52-af8f-4078de68e0ea
+langcode: en
+status: true
+dependencies:
+  module:
+    - system
+  theme:
+    - provus
+_core:
+  default_config_hash: KC12e0aosUnBBs5bd374JVcQjJaFNOSIHzu0dUGf22o
+id: provus_messages
+theme: provus
+region: highlighted
+weight: 0
+provider: null
+plugin: system_messages_block
+settings:
+  id: system_messages_block
+  label: 'Status messages'
+  label_display: '0'
+  provider: system
+visibility: {  }
