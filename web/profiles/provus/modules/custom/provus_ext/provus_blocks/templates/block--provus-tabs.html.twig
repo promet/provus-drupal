@@ -49,7 +49,7 @@
         {# Loops through the tab sections to print the tab section titles. #}
         {% for key, item in items if key|first != '#' %}
           <li class="nav-item {{ orientation }}-tabs__menu-item" role="presentation">
-            <a aria-controls="tab-{{ id }}-{{ key + 1 }}" class="nav-link tab-clickable {% if loop.first %}active{% endif %}" data-bs-target="tab-{{ id }}-{{ key + 1 }}" id="tab-{{ id }}-{{ key + 1 }}-tab" href="#" data-bs-toggle="tab" role="tab">
+            <a aria-controls="tab-{{ id }}-{{ key + 1 }}" class="nav-link tab-clickable {% if loop.first %}active{% endif %}" data-bs-target="#tab-{{ id }}-{{ key + 1 }}" id="tab-{{ id }}-{{ key + 1 }}-tab" href="#" data-bs-toggle="tab" role="tab">
               {{ item.title }}
             </a>
           </li>
