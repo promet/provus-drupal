@@ -1,0 +1,29 @@
+langcode: en
+status: true
+dependencies:
+  module:
+    - block_content
+    - options
+id: block_content.field_provus_item_display
+field_name: field_provus_item_display
+entity_type: block_content
+type: list_string
+settings:
+  allowed_values:
+    -
+      value: card_1
+      label: 'Default Card Style'
+    -
+      value: card_2
+      label: 'Card Style 2'
+    -
+      value: card_3
+      label: 'Card Style 3'
+  allowed_values_function: ''
+module: options
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false
