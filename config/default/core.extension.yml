@@ -66,5 +66,5 @@ theme:
   claro: 0
   gin: 0
   bootstrap_sass: 0
-  provus: 0
+  provus_bootstrap: 0
 profile: standard
