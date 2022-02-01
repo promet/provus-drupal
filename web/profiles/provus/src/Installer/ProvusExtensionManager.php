@@ -60,6 +60,7 @@ class ProvusExtensionManager implements ContainerInjectionInterface {
    *   An array containing the extensions with module name as the key.
    */
   public function getExtensions() : array {
+   
     $extensions = [];
     $available_modules = $this->moduleExtensionList->getList();
     $install_profile_extensions = $this->getInstallProfileExtensions();
@@ -82,8 +83,11 @@ class ProvusExtensionManager implements ContainerInjectionInterface {
    *   An array containing the extensions with module name as the key.
    */
   protected function getInstallProfileExtensions() : array {
-    $extension_list_name = $this->installProfile . '.provus_extension_list.yml';
+    
+    $extension_list_name = $this->installProfile . '.extension_list.yml';
+   
     $extension_list_file = $this->moduleExtensionList->getPath($this->installProfile) . DIRECTORY_SEPARATOR . $extension_list_name;
+
     if (!file_exists($extension_list_file)) {
       return [];
     }
@@ -112,6 +116,7 @@ class ProvusExtensionManager implements ContainerInjectionInterface {
    */
   protected function getExtensionInfo(Extension $extension) : ?array {
     $module_directory = $extension->getPath();
+   
     $optional_info_file = $module_directory . DIRECTORY_SEPARATOR . $extension->getName() . '.provus_extension.yml';
     if (!file_exists($optional_info_file)) {
       return NULL;
