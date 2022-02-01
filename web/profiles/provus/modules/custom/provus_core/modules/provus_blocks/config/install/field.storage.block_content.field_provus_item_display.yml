@@ -9,17 +9,8 @@ field_name: field_provus_item_display
 entity_type: block_content
 type: list_string
 settings:
-  allowed_values:
-    -
-      value: card_1
-      label: 'Default Card Style'
-    -
-      value: card_2
-      label: 'Card Style 2'
-    -
-      value: card_3
-      label: 'Card Style 3'
-  allowed_values_function: ''
+  allowed_values: {  }
+  allowed_values_function: provus_blocks_item_display_allowed_values
 module: options
 locked: false
 cardinality: 1

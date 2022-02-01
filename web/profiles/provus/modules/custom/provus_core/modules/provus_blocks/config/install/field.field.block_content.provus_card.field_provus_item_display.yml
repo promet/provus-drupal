@@ -14,9 +14,7 @@ label: Display
 description: ''
 required: false
 translatable: false
-default_value:
-  -
-    value: card_1
-default_value_callback: ''
+default_value: {  }
+default_value_callback: provus_blocks_item_display_get_default
 settings: {  }
 field_type: list_string
