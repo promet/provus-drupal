@@ -28,6 +28,7 @@
         "drupal/core-recommended": "^9.2",
         "drupal/entity_staging": "1.x-dev@dev",
         "drupal/gin": "^3.0@alpha",
+        "drupal/gin_toolbar": "^1.0@beta",
         "drupal/inline_entity_form": "^1.0@RC",
         "drupal/layout_builder_styles": "^1.0@beta",
         "drupal/layout_library": "^1.0@beta",

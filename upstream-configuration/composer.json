@@ -49,13 +49,12 @@
         "drupal/admin_toolbar": "^3.0",
         "drupal/antibot": "^1.5",
         "drupal/address": "^1.9",
+        "drupal/bootstrap_layout_builder": "^2.0",
+        "drupal/bootstrap_layouts": "^5.2",
         "drupal/calendar_link": "^2.1",
         "drupal/chosen": "^3.0",
         "drupal/config_ignore": "^2.3",
-        "drupal/components": "^2.4",
         "drupal/devel": "^4.1",
-        "drupal/dropzonejs": "^2.5",
-        "drupal/emulsify_twig": "^2.0",
         "drupal/entity": "^1.2",
         "drupal/environment_indicator": "^4.0",
         "drupal/entity_embed": "^1.2",
@@ -85,10 +84,7 @@
         "drupal/search_api_glossary": "^4.1",
         "drupal/search_api_solr": "^4.2",
         "drupal/section_library": "^1.0",
-        "drupal/simple_instagram_feed": "^3.11",
         "drupal/smart_trim": "^1.3",
-        "drupal/socialfeed": "^1.3",
-        "drupal/stage_file_proxy": "^1.2",
         "drupal/twig_tweak": "^3.1",
         "drupal/view_unpublished": "^1.0",
         "drupal/viewsreference": "^1.7",
@@ -101,7 +97,8 @@
         "vlucas/phpdotenv": "^5.4",
         "webflo/drupal-finder": "^1.2",
         "webmozart/path-util": "^2.3",
-        "zaporylie/composer-drupal-optimizations": "^1.2"
+        "zaporylie/composer-drupal-optimizations": "^1.2",
+        "drupal/gin_login": "1.0"
     },
     "extra": {
         "_README": "To make a custom upstream, clone this repository and add any dependencies to be provided by this upstream to this composer.json file. Leave the root-level composer.json file for the exclusive use of each individual site; do not modify it after your custom upstream has been published. See https://pantheon.io/docs/create-custom-upstream for more information."
