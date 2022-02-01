@@ -6,6 +6,7 @@
  */
 
 use Drupal\Component\Utility\Html;
+use Drupal\Core\Block\BlockPluginInterface;
 use Drupal\Core\Form\FormStateInterface;
 use Drupal\Core\Routing\RouteMatchInterface;
 
@@ -86,7 +87,8 @@ function provus_blocks_preprocess_block(&$vars) {
       $vars['heading_level'] = $block->get('field_provus_heading_level')->value;
     }
     elseif ($block_type == 'provus_card') {
-      $vars['cardstyle'] = _provus_get_cardstyle_from_viewmode($block->get('field_provus_item_display')->value);
+      $viewmode = !empty($vars['elements']['content']['#provus_group_item_display']) ? $vars['elements']['content']['#provus_group_item_display'] : $block->get('field_provus_item_display')->value;
+      $vars['cardstyle'] = _provus_get_cardstyle_from_viewmode($viewmode);
     }
     elseif ($block_type == 'provus_accordion' || $block_type == 'provus_tabs') {
       _provus_preprocess_accordiontabs($vars, $block);
@@ -189,4 +191,27 @@ function _provus_get_cardstyle_from_viewmode($viewmode) {
   }
 
   return $cardstyle;
+}
+
+/**
+ * Get block build.
+ */
+function provus_blocks_get_block(&$block_build, $entity) {
+  $configuration = [
+    'label' => '',
+    'label_display' => BlockPluginInterface::BLOCK_LABEL_VISIBLE
+  ];
+  $block_uuid = 'block_content:' . $entity->uuid();
+  $block_plugin = \Drupal::service('plugin.manager.block')
+    ->createInstance($block_uuid, $configuration);
+  $block_build += [
+    '#theme' => 'block',
+    '#attributes' => [],
+    '#contextual_links' => [],
+    '#configuration' => $block_plugin->getConfiguration(),
+    '#plugin_id' => $block_uuid,
+    '#base_plugin_id' => 'block_content',
+    '#derivative_plugin_id' => $entity->uuid(),
+  ];
+  $block_build['content']['#ischild'] = TRUE;
 }
