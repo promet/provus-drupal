@@ -28,6 +28,7 @@ distribution:
 
 # Modules to install to support the profile.
 install:
+  - admin_toolbar
   - history
   - block_content
   - breakpoint
@@ -53,6 +54,8 @@ install:
   - views_ui
   - editor
   - ckeditor
+  - provus_core
+  - provus_blocks
 
 # Required modules
 # Note that any dependencies of the modules listed here will be installed automatically.

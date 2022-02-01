@@ -16,8 +16,10 @@
     "require": {
         "composer/installers": "^1.9",
         "cweagans/composer-patches": "^1.7",
+        "drupal/ala": "^1.8",
         "drupal/auto_entitylabel": "^3.0@beta",
         "drupal/bootstrap_barrio": "^5.5",
+        "drupal/bootstrap_sass": "^5.0",
         "drupal/config_distro": "^1.0@alpha",
         "drupal/config_merge": "^1.0@RC",
         "drupal/config_provider": "^2.0@RC",
