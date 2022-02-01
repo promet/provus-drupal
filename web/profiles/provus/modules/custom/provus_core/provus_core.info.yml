@@ -9,3 +9,5 @@ dependencies:
   - drupal:system
   - drupal:text
   - layout_builder
+  - bootstrap_layout_builder
+  - bootstrap_styles
