@@ -36,6 +36,7 @@
   'block-' ~ plugin_id|clean_class,
 ]
 %}
+{%  set rowclass = 'row row-cols-' ~ group_number  %}
 <div{{ attributes.addClass(classes) }}>
   {{ title_prefix }}
   {% if label %}
@@ -43,22 +44,16 @@
   {% endif %}
   {{ title_suffix }}
   {% block content %}
-    <div class="accordion" id="accordion{{ id }}">
-      {% for key, item in items %}
-        <div class="accordion-item">
-          <h2 class="accordion-header" id="heading{{ id }}-{{ key }}">
-              <button class="accordion-button{% if ((openfirst == true) and (key != 0)) or (openfirst == false) %} collapsed{% endif %}" type="button" data-bs-toggle="collapse" data-bs-target="#collapse{{ id }}-{{ key }}" aria-expanded="{% if (openfirst == true) and (key == 0) %}true{% else %}false{% endif %}" aria-controls="collapse{{ id }}-{{ key }}">
-                {{ item.title }}
-              </button>
-          </h2>
-
-          <div id="collapse{{ id }}-{{ key }}" class="accordion-collapse collapse{% if (openfirst == true) and (key == 0) %} show{% endif %}" data-bs-parent="#accordion{{ id }}">
-            <div class="card-body">
-              {{ item.content }}
-            </div>
-          </div>
+    {% if content.field_title|render %}
+      <h2 class="card-title">{{ content.field_title }}</h2>
+    {% endif %}
+    <div{{ content_attributes.addClass(rowclass) }}>
+      {% for block in blocks %}
+        <div class="col">
+          {{ block }}
         </div>
       {% endfor %}
     </div>
+    {{ content.field_link }}
   {% endblock %}
 </div>
