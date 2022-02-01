@@ -35,8 +35,14 @@ function provus_blocks_theme_suggestions_block_alter(&$suggestions, $vars) {
     $block_type = $block->bundle();
     $base_suggestion = 'block__' . $block_type;
     $suggestions[] = $base_suggestion;
+    // Add view mode to suggestions.
     if (!empty($vars['elements']['content']['#view_mode'])) {
       $suggestions[] = $base_suggestion . '__' . $vars['elements']['content']['#view_mode'];
+    }
+    // For provus cards, add our provus display mode names to suggestions.
+    if ($block_type == 'provus_card') {
+      $display_mode = !empty($vars['elements']['content']['#provus_group_item_display']) ? $vars['elements']['content']['#provus_group_item_display'] : $block->get('field_provus_item_display')->value;
+      $suggestions[] = $base_suggestion . '__provus_display_' . $display_mode;
     }
   }
   return $suggestions;
@@ -87,8 +93,8 @@ function provus_blocks_preprocess_block(&$vars) {
       $vars['heading_level'] = $block->get('field_provus_heading_level')->value;
     }
     elseif ($block_type == 'provus_card') {
-      $viewmode = !empty($vars['elements']['content']['#provus_group_item_display']) ? $vars['elements']['content']['#provus_group_item_display'] : $block->get('field_provus_item_display')->value;
-      $vars['cardstyle'] = _provus_get_cardstyle_from_viewmode($viewmode);
+      $display_mode = !empty($vars['elements']['content']['#provus_group_item_display']) ? $vars['elements']['content']['#provus_group_item_display'] : $block->get('field_provus_item_display')->value;
+      $vars['cardstyle'] = _provus_get_cardstyle_from_displaymode($display_mode);
     }
     elseif ($block_type == 'provus_accordion' || $block_type == 'provus_tabs') {
       _provus_preprocess_accordiontabs($vars, $block);
@@ -125,72 +131,23 @@ function provus_blocks_form_alter(&$form, FormStateInterface $form_state, $form_
 }
 
 /**
- * Preprocess function for accordion and tabs.
+ * Returns an array of names for card display modes.
  */
-function _provus_preprocess_accordiontabs(&$vars, $block) {
-  $storage = \Drupal::entityTypeManager()->getStorage('block_content');
-  $vars['id'] = $block->uuid();
-  // If we have an accordion, we have an option for open first item initially.
-  if ($block->hasField('field_provus_openfirst')) {
-    $vars['openfirst'] = $block->get('field_provus_openfirst')->value;
+function provus_blocks_item_display_allowed_values() {
+  $options = [];
+  $provus_displays = \Drupal::config('provus.displays.card_settings')->get('displays');
+  foreach ($provus_displays as $key => $display) {
+    $options[$key] = $display['name'];
   }
-  // Loop through the accordion or tabs items and store each item in a variable
-  // for the accordion block to render in it's template.
-  $id_array = $block->get('field_provus_items')->getValue();
-  if (!empty($id_array)) {
-    foreach ($id_array as $key => $id) {
-      $entity = $storage->load($id['target_id']);
-      if ($entity) {
-        $vars['items'][$key]['title'] = $entity->get('field_provus_title')
-          ->value;
-        $vars['items'][$key]['content'] = $entity->get('field_provus_body')
-          ->view('default');
-      }
-    }
-  }
+  return $options;
 }
 
 /**
- * Returns an array of card styles based on a view mode.
+ * Returns a default value for card display modes.
  */
-function _provus_get_cardstyle_from_viewmode($viewmode) {
-  // TODO: Pull this out into a yml file to load as config.
-  $allfields = [
-    'header',
-    'title',
-    'image',
-    'body',
-    'list',
-    'links',
-    'footer',
-  ];
-
-  switch ($viewmode) {
-    case 'card_3':
-      $cardstyle = [
-        'fields' => $allfields,
-        'bg_image' => FALSE,
-        'horizontal' => TRUE,
-      ];
-      break;
-    case 'card_2':
-      $cardstyle = [
-        'fields' => $allfields,
-        'bg_image' => TRUE,
-        'horizontal' => FALSE,
-      ];
-      break;
-    case 'card_1':
-    default:
-      $cardstyle = [
-        'fields' => $allfields,
-        'bg_image' => FALSE,
-        'horizontal' => FALSE,
-      ];
-      break;
-  }
-
-  return $cardstyle;
+function provus_blocks_item_display_get_default() {
+  $provus_displays = \Drupal::config('provus.displays.card_settings')->get('displays');
+  return array_key_first($provus_displays);
 }
 
 /**
@@ -214,4 +171,45 @@ function provus_blocks_get_block(&$block_build, $entity) {
     '#derivative_plugin_id' => $entity->uuid(),
   ];
   $block_build['content']['#ischild'] = TRUE;
+}
+
+/**
+ * Returns an array of card styles based on a display mode.
+ */
+function _provus_get_cardstyle_from_displaymode($display_mode) {
+  // Load the provus display configurations from a file.
+  $provus_displays = \Drupal::config('provus.displays.card_settings')->get('displays');
+
+  if (!empty($provus_displays[$display_mode]['cardstyle'])) {
+    return $provus_displays[$display_mode]['cardstyle'];
+  }
+  else {
+    return [];
+  }
+}
+
+/**
+ * Preprocess function for accordion and tabs.
+ */
+function _provus_preprocess_accordiontabs(&$vars, $block) {
+  $storage = \Drupal::entityTypeManager()->getStorage('block_content');
+  $vars['id'] = $block->uuid();
+  // If we have an accordion, we have an option for open first item initially.
+  if ($block->hasField('field_provus_openfirst')) {
+    $vars['openfirst'] = $block->get('field_provus_openfirst')->value;
+  }
+  // Loop through the accordion or tabs items and store each item in a variable
+  // for the accordion block to render in it's template.
+  $id_array = $block->get('field_provus_items')->getValue();
+  if (!empty($id_array)) {
+    foreach ($id_array as $key => $id) {
+      $entity = $storage->load($id['target_id']);
+      if ($entity) {
+        $vars['items'][$key]['title'] = $entity->get('field_provus_title')
+          ->value;
+        $vars['items'][$key]['content'] = $entity->get('field_provus_body')
+          ->view('default');
+      }
+    }
+  }
 }
