@@ -33,6 +33,7 @@
         "drupal/layout_library": "^1.0@beta",
         "drupal/linkit": "^6.0@beta",
         "drupal/media_bulk_upload": "^1.0@alpha",
+        "drupal/styleguide": "^2.0@beta",
         "drush/drush": "^10",
         "pantheon-systems/drupal-integrations": "^9",
         "pantheon-upstreams/upstream-configuration": "self.version"
@@ -87,7 +88,8 @@
             "cweagans/composer-patches": true,
             "oomphinc/composer-installers-extender": true,
             "zaporylie/composer-drupal-optimizations": true,
-            "drupal/core-composer-scaffold": true
+            "drupal/core-composer-scaffold": true,
+            "dealerdirect/phpcodesniffer-composer-installer": true
         }
     }
 }
