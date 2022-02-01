@@ -94,18 +94,6 @@ class ProvusConfigureForm extends ConfigFormBase {
     ];
 
     $optional_features = $this->extensionManager->getExtensions();
-   // this needs to come from the provus_etc dir parsing through the modules to find the module.provus_extensions.yml file
-    $optional_features = array(array(
-      'name' => 'Provus Blocks',
-      'description' => 'Provus block description',
-       'default' => false
-    ),
-    array(
-      'name' => 'Provus Department',
-      'description' => 'Departments as groups for Provus',
-       'default' => true
-    )
-  );
     $feature_options = array_map(
       static function ($info) {
         return $info['name'];

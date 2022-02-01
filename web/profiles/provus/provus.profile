@@ -54,7 +54,6 @@ function provus_install_tasks_alter(array &$tasks, array $install_state) {
     array_slice($tasks, $insert_before - 1, NULL, TRUE);
 }
 
-
 /**
  * Install task callback prepares a batch job to install Provus extensions.
  *
@@ -65,28 +64,36 @@ function provus_install_tasks_alter(array &$tasks, array $install_state) {
  *   The batch job definition.
  */
 function provus_install_extensions(array &$install_state) {
-//   $batch = [];
-//   $modules = \Drupal::state()->get('provus_install_extensions', []);
-//   $install_core_search = TRUE;
+  $batch = [];
+  $modules = \Drupal::state()->get('provus_install_extensions', []);
+  $install_core_search = TRUE;
 
-//   foreach ($modules as $module) {
-//     $batch['operations'][] = ['provus_install_module', (array) $module];
-//     //-- save for custom search --
-//     // if ($module == 'provus_ext_search_db') {
-//     //   $install_core_search = FALSE;
-//     // }
-//   }
+  foreach ($modules as $module) {
+    $batch['operations'][] = ['provus_install_module', (array) $module];
+    if ($module == 'provus_ext_search_db') {
+      $install_core_search = FALSE;
+    }
+  }
+  if ($install_core_search) {
+    $batch['operations'][] = ['provus_install_module', (array) 'search'];
+    // Enable default permissions for system roles.
+    user_role_grant_permissions(AccountInterface::ANONYMOUS_ROLE, [
+      'use search',
+      'search content',
+    ]);
+  }
 
-  // if ($install_core_search) {
-  //   $batch['operations'][] = ['provus_install_module', (array) 'search'];
-  //   // Enable default permissions for system roles.
-  //   user_role_grant_permissions(AccountInterface::ANONYMOUS_ROLE, [
-  //     'use search',
-  //     'search content',
-  //   ]);
-  // }
+  return $batch;
+}
 
- // return $batch;
+/**
+ * Batch API callback. Installs a module.
+ *
+ * @param string|array $module
+ *   The name(s) of the module(s) to install.
+ */
+function provus_install_module($module) {
+  \Drupal::service('module_installer')->install((array) $module);
 }
 
 /**
