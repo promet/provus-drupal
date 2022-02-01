@@ -22,6 +22,7 @@
 /web/sites/*/cache
 
 # Ignore drupal core (if not versioning drupal sources)
+/web/
 /web/vendor
 /web/core
 /web/modules/README.txt
@@ -49,13 +50,15 @@
 /web/robots.txt
 /web/update.php
 /web/web.config
+/web/themes/contrib
+/web/modules/contrib
 
 # Ignore vendor dependencies and scripts
 /vendor
 /composer.phar
 /composer
 /robo.phar
-/robo
+/robo:
 /drush.phar
 /drush
 /drupal.phar
