@@ -1,0 +1,8 @@
+name: 'Provus Blocks: Group'
+type: module
+description: 'Custom provus block: Group.'
+core_version_requirement: ^8 || ^9
+package: 'Provus'
+
+dependencies:
+  - provus_blocks
