@@ -26,6 +26,7 @@
         "drupal/config_snapshot": "^1.0@RC",
         "drupal/core-composer-scaffold": "^9.2",
         "drupal/core-recommended": "^9.2",
+        "drupal/default_content": "^1.0@alpha",
         "drupal/entity_staging": "1.x-dev@dev",
         "drupal/gin": "^3.0@alpha",
         "drupal/gin_toolbar": "^1.0@beta",

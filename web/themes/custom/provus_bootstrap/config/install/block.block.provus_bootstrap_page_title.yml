@@ -6,7 +6,7 @@ dependencies:
     - bootstrap_barrio
 _core:
   default_config_hash: ItFhhiUOoeR7oIq73ZaCV7PAYrOwXZ-9fazMzF5DJXM
-id: provus_page_title
+id: provus_bootstrap_page_title
 theme: provus_bootstrap
 region: content
 weight: -50

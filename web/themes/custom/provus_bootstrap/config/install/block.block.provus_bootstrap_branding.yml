@@ -8,7 +8,7 @@ dependencies:
     - provus_bootstrap
 _core:
   default_config_hash: d-0emr1mEq7sFKDu5RHUJckvNk62hvIZdRwPEfnJyGg
-id: provus_branding
+id: provus_bootstrap_branding
 theme: provus_bootstrap
 region: header
 weight: 0

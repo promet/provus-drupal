@@ -5,4 +5,4 @@ core_version_requirement: '^8.8 || ^9'
 package: Provus
 dependencies:
   - 'provus_core:provus_core'
-  - 'provus_block:provus_block'
+  - 'provus_blocks:provus_blocks'

@@ -10,7 +10,7 @@ dependencies:
     - bootstrap_barrio
 _core:
   default_config_hash: jzu74Q7R0QWgw8IniA9HZRSb_a8RPak1M0q5J-VGkZI
-id: provus_account_menu
+id: provus_bootstrap_account_menu
 theme: provus_bootstrap
 region: secondary_menu
 weight: 0
