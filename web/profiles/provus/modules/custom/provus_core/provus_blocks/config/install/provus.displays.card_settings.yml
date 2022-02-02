@@ -1,0 +1,16 @@
+displays:
+  card_1:
+    name: 'Card 1'
+    cardstyle:
+      bg_image: false
+      horizontal: false
+  card_2:
+    name: 'Card 2'
+    cardstyle:
+      bg_image: true
+      horizontal: false
+  card_3:
+    name: 'Card 3'
+    cardstyle:
+      bg_image: false
+      horizontal: true
