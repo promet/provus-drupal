@@ -94,7 +94,7 @@ function provus_blocks_preprocess_block(&$vars) {
     }
     elseif ($block_type == 'provus_card') {
       $display_mode = !empty($vars['elements']['content']['#provus_group_item_display']) ? $vars['elements']['content']['#provus_group_item_display'] : $block->get('field_provus_item_display')->value;
-      $vars['cardstyle'] = _provus_get_cardstyle_from_displaymode($display_mode);
+      $vars['cardstyle'] = provus_blocks_get_cardstyle_from_displaymode($display_mode);
     }
     elseif ($block_type == 'provus_accordion' || $block_type == 'provus_tabs') {
       _provus_preprocess_accordiontabs($vars, $block);
@@ -176,7 +176,7 @@ function provus_blocks_get_block(&$block_build, $entity) {
 /**
  * Returns an array of card styles based on a display mode.
  */
-function _provus_get_cardstyle_from_displaymode($display_mode) {
+function provus_blocks_get_cardstyle_from_displaymode($display_mode) {
   // Load the provus display configurations from a file.
   $provus_displays = \Drupal::config('provus.displays.card_settings')->get('displays');
 
