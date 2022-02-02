@@ -58,7 +58,6 @@ module:
   user: 0
   views_ui: 0
   views: 10
-  standard: 1000
 theme:
   bartik: 0
   seven: 0
@@ -67,4 +66,4 @@ theme:
   gin: 0
   bootstrap_sass: 0
   provus_bootstrap: 0
-profile: standard
+profile: provus

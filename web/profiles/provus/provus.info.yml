@@ -1,4 +1,4 @@
-name: Provus - Minimal
+name: Provus
 type: profile
 description: 'Provus by Promet Source. Kick start your website!'
 core_version_requirement: '^8.8 || ^9'
