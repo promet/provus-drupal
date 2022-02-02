@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "2f844e95018df29bd4c64eef72295e0e",
+    "content-hash": "62b75daebaf143e6d139f8e7fb03a1eb",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -3228,16 +3228,16 @@
         },
         {
             "name": "drupal/core",
-            "version": "9.3.3",
+            "version": "9.3.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/drupal/core.git",
-                "reference": "a9bd68be9a4e39724ea555f8040114759a8faf7f"
+                "reference": "5ed580731a38ebd024ad323e71ebdbca6dbaade1"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/drupal/core/zipball/a9bd68be9a4e39724ea555f8040114759a8faf7f",
-                "reference": "a9bd68be9a4e39724ea555f8040114759a8faf7f",
+                "url": "https://api.github.com/repos/drupal/core/zipball/5ed580731a38ebd024ad323e71ebdbca6dbaade1",
+                "reference": "5ed580731a38ebd024ad323e71ebdbca6dbaade1",
                 "shasum": ""
             },
             "require": {
@@ -3435,10 +3435,14 @@
                 }
             },
             "autoload": {
+                "files": [
+                    "includes/bootstrap.inc",
+                    "includes/guzzle_php81_shim.php"
+                ],
                 "psr-4": {
                     "Drupal\\Core\\": "lib/Drupal/Core",
-                    "Drupal\\Component\\": "lib/Drupal/Component",
-                    "Drupal\\Driver\\": "../drivers/lib/Drupal/Driver"
+                    "Drupal\\Driver\\": "../drivers/lib/Drupal/Driver",
+                    "Drupal\\Component\\": "lib/Drupal/Component"
                 },
                 "classmap": [
                     "lib/Drupal.php",
@@ -3467,10 +3471,6 @@
                     "lib/Drupal/Core/Http/InputBag.php",
                     "lib/Drupal/Core/Installer/InstallerRedirectTrait.php",
                     "lib/Drupal/Core/Site/Settings.php"
-                ],
-                "files": [
-                    "includes/bootstrap.inc",
-                    "includes/guzzle_php81_shim.php"
                 ]
             },
             "notification-url": "https://packagist.org/downloads/",
@@ -3479,13 +3479,13 @@
             ],
             "description": "Drupal is an open source content management platform powering millions of websites and applications.",
             "support": {
-                "source": "https://github.com/drupal/core/tree/9.3.3"
+                "source": "https://github.com/drupal/core/tree/9.3.4"
             },
-            "time": "2022-01-19T00:13:54+00:00"
+            "time": "2022-02-02T18:03:30+00:00"
         },
         {
             "name": "drupal/core-composer-scaffold",
-            "version": "9.3.3",
+            "version": "9.3.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/drupal/core-composer-scaffold.git",
@@ -3529,22 +3529,22 @@
                 "drupal"
             ],
             "support": {
-                "source": "https://github.com/drupal/core-composer-scaffold/tree/9.3.3"
+                "source": "https://github.com/drupal/core-composer-scaffold/tree/9.3.4"
             },
             "time": "2021-11-19T09:52:23+00:00"
         },
         {
             "name": "drupal/core-recommended",
-            "version": "9.3.3",
+            "version": "9.3.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/drupal/core-recommended.git",
-                "reference": "a2fc42cb765874e5393d203ee807ac57abe04b12"
+                "reference": "2d4c83eb8d68c4583343ecb4e2ef46506e6a1417"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/drupal/core-recommended/zipball/a2fc42cb765874e5393d203ee807ac57abe04b12",
-                "reference": "a2fc42cb765874e5393d203ee807ac57abe04b12",
+                "url": "https://api.github.com/repos/drupal/core-recommended/zipball/2d4c83eb8d68c4583343ecb4e2ef46506e6a1417",
+                "reference": "2d4c83eb8d68c4583343ecb4e2ef46506e6a1417",
                 "shasum": ""
             },
             "require": {
@@ -3553,7 +3553,7 @@
                 "doctrine/annotations": "1.13.2",
                 "doctrine/lexer": "1.2.1",
                 "doctrine/reflection": "1.2.2",
-                "drupal/core": "9.3.3",
+                "drupal/core": "9.3.4",
                 "egulias/email-validator": "3.1.2",
                 "guzzlehttp/guzzle": "6.5.5",
                 "guzzlehttp/promises": "1.5.1",
@@ -3615,9 +3615,9 @@
             ],
             "description": "Locked core dependencies; require this project INSTEAD OF drupal/core.",
             "support": {
-                "source": "https://github.com/drupal/core-recommended/tree/9.3.3"
+                "source": "https://github.com/drupal/core-recommended/tree/9.3.4"
             },
-            "time": "2022-01-19T00:13:54+00:00"
+            "time": "2022-02-02T18:03:30+00:00"
         },
         {
             "name": "drupal/crop",
@@ -6119,29 +6119,26 @@
         },
         {
             "name": "drupal/menu_block",
-            "version": "1.7.0",
+            "version": "dev-1.x",
             "source": {
                 "type": "git",
                 "url": "https://git.drupalcode.org/project/menu_block.git",
-                "reference": "8.x-1.7"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://ftp.drupal.org/files/projects/menu_block-8.x-1.7.zip",
-                "reference": "8.x-1.7",
-                "shasum": "6d021a24a6a8691becbecf02ac236a7d8626d4d0"
+                "reference": "17bc5a2094dec85a921fdac6aff0030bfe004744"
             },
             "require": {
                 "drupal/core": "^8 || ^9"
             },
             "type": "drupal-module",
             "extra": {
+                "branch-alias": {
+                    "dev-1.x": "1.x-dev"
+                },
                 "drupal": {
-                    "version": "8.x-1.7",
-                    "datestamp": "1619638238",
+                    "version": "8.x-1.6+9-dev",
+                    "datestamp": "1612055345",
                     "security-coverage": {
-                        "status": "covered",
-                        "message": "Covered by Drupal's security advisory policy"
+                        "status": "not-covered",
+                        "message": "Dev releases are not covered by Drupal security advisories."
                     }
                 }
             },
@@ -8333,12 +8330,12 @@
                 }
             },
             "autoload": {
-                "psr-4": {
-                    "GuzzleHttp\\Psr7\\": "src/"
-                },
                 "files": [
                     "src/functions_include.php"
-                ]
+                ],
+                "psr-4": {
+                    "GuzzleHttp\\Psr7\\": "src/"
+                }
             },
             "notification-url": "https://packagist.org/downloads/",
             "license": [
@@ -9315,7 +9312,7 @@
             "dist": {
                 "type": "path",
                 "url": "upstream-configuration",
-                "reference": "83d97df901cf8fe08eeb32aecde411582bf79ee9"
+                "reference": "09ddef1410ec88ed89e3db007bfd746d5cf60822"
             },
             "require": {
                 "drupal/address": "^1.9",
@@ -9346,7 +9343,7 @@
                 "drupal/layout_builder_restrictions": "^2.12",
                 "drupal/layout_paragraphs": "^1.0",
                 "drupal/memcache": "^2.3",
-                "drupal/menu_block": "^1.7",
+                "drupal/menu_block": "1.x-dev",
                 "drupal/menu_breadcrumb": "^1.16",
                 "drupal/migrate_plus": "^5.2",
                 "drupal/office_hours": "^1.5",
@@ -14733,7 +14730,7 @@
         },
         {
             "name": "drupal/core-dev",
-            "version": "9.3.3",
+            "version": "9.3.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/drupal/core-dev.git",
@@ -14777,7 +14774,7 @@
             ],
             "description": "require-dev dependencies from drupal/drupal; use in addition to drupal/core-recommended to run tests from drupal/core.",
             "support": {
-                "source": "https://github.com/drupal/core-dev/tree/9.3.3"
+                "source": "https://github.com/drupal/core-dev/tree/9.3.4"
             },
             "time": "2021-11-30T05:41:29+00:00"
         },
@@ -17629,7 +17626,7 @@
         }
     ],
     "aliases": [],
-    "minimum-stability": "stable",
+    "minimum-stability": "dev",
     "stability-flags": {
         "drupal/auto_entitylabel": 10,
         "drupal/config_distro": 15,
