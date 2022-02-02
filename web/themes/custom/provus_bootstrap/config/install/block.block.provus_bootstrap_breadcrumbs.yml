@@ -8,7 +8,7 @@ dependencies:
     - bootstrap_barrio
 _core:
   default_config_hash: y0bXRvKYQQKkf_RVxA3aOPGpIfKKsDOzzrWYCgjxJ9Y
-id: provus_breadcrumbs
+id: provus_bootstrap_breadcrumbs
 theme: provus_bootstrap
 region: breadcrumb
 weight: 0

@@ -8,7 +8,7 @@ dependencies:
     - bootstrap_barrio
 _core:
   default_config_hash: KC12e0aosUnBBs5bd374JVcQjJaFNOSIHzu0dUGf22o
-id: provus_messages
+id: provus_bootstrap_messages
 theme: provus_bootstrap
 region: highlighted
 weight: 0
