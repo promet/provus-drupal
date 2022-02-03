@@ -1,7 +1,18 @@
+// Card styles.
 .card-img-top {
   overflow: hidden;
   img {
     width: 100%;
     height: auto;
   }
+}
+
+.card {
+  border-radius: $card-border-radius;
+  padding: $card-spacing;
+  border: 1px solid $card-border-color;
+}
+
+.card-header {
+  padding: 1rem $card-spacing;
 }

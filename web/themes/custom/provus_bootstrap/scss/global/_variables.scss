@@ -8,10 +8,16 @@ $font-heading: 'Montserrat', sans-serif;
 $primary-shade: #31227C;
 $secondary-shade: #DA3807;
 $accent-shade: #FD5809;
+$heading-color: #1d2b36;
 $space: 1rem;
 $font-size-base: 1rem;
+$card-border-radius: .25rem;
+$card-spacing: 1.25rem;
+$card-border-color: #ddd;
+$body-bg: #fff;
+$body-color: #343a40;
 
-// colors
+// Main Colors (Light & Dark)
 $primary-light: lighten($primary-shade, 37%);
 $primary-dark: darken($primary-shade, 12%);
 $secondary-light: lighten($secondary-shade, 37%);
@@ -24,14 +30,13 @@ $white: white;
 $gray-lightest: #eaeaea;
 $gray-light: #747474;
 $gray: #666;
-$gray-dark: #1d2b36;
 $gray-darker: #333;
 $gray-medium: #556575;
 $black: #15191B;
 
-// Tables
+// Tables colors
 $table-gray: #f8f8f8;
-$table-border: $gray;
+$table-border: $card-border-color;
 
 // Reassign color vars to semantic color scheme
 $red: #dc3545;
@@ -40,42 +45,20 @@ $green: #28a745;
 $cyan: #17a2b8;
 $white: #fff;
 $gray-100: #f8f9fa;
-$gray-800: #343a40;
+$gray-800: $body-color;
 $theme-colors: ( primary: $accent-shade, secondary: $primary-shade, success: $green, info: $cyan, warning: $yellow, danger: $red, light: $gray-100, dark: $gray-800);
 $brand-primary: $primary-shade;
 $brand-inverse: $secondary-shade;
 
-// Body
-// Settings for the `<body>` element.
-$body-bg: $white;
-$body-color: $gray-800;
-$inverse-bg: $primary-shade;
-$inverse-color: $white;
-$heading: $gray-dark;
-
-// Links
-// Style anchor elements.
-$link-color: $accent-shade;
-$link-decoration: none;
-$link-hover-color: $accent-dark;
-$link-hover-decoration: underline;
-
-// Comments
-$comment-spacer-x: 1.25em;
-$comment-spacer-y: 1.25em;
+// Blockquote
+$color-border: $accent-shade;
 
 // Responsive font sizes
 $enable-responsive-font-sizes: true;
 $enable-shadows: false;
 $enable-gradients: false;
-// Breadcrumbs (Works only on Bootstrap 5+)
-// $breadcrumb-divider: quote(">");
 
-$color-border: $accent-shade;
-
-// Provus global variables
-
-// Font size
+// Font sizes
 $font-size-lg: $font-size-base * 1.25;
 $font-size-sm: $font-size-base * .875;
 $font-size-xs: $font-size-base * .75;
