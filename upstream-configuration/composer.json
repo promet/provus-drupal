@@ -62,7 +62,6 @@
         "drupal/facets": "^2.0",
         "drupal/field_group": "^3.2",
         "drupal/focal_point": "^1.5",
-        "drupal/fullcalendar_view": "^5.1",
         "drupal/geocoder": "^3.24",
         "drupal/geofield": "^1.36",
         "drupal/geofield_map": "^2.71",
@@ -98,7 +97,9 @@
         "webflo/drupal-finder": "^1.2",
         "webmozart/path-util": "^2.3",
         "zaporylie/composer-drupal-optimizations": "^1.2",
-        "drupal/gin_login": "1.0"
+        "drupal/gin_login": "1.0",
+        "drupal/date_recur": "3.1.0",
+        "drupal/date_recur_modular": "3.0.1"
     },
     "extra": {
         "_README": "To make a custom upstream, clone this repository and add any dependencies to be provided by this upstream to this composer.json file. Leave the root-level composer.json file for the exclusive use of each individual site; do not modify it after your custom upstream has been published. See https://pantheon.io/docs/create-custom-upstream for more information."
