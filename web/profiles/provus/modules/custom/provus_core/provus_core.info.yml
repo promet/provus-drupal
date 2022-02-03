@@ -12,3 +12,4 @@ dependencies:
   - layout_builder_modal
   - bootstrap_layout_builder
   - bootstrap_styles
+  - views_bootstrap
