@@ -79,31 +79,31 @@ function provus_blocks_theme() {
 /**
  * Implements hook_preprocess_block().
  */
-function provus_blocks_preprocess_block(&$vars) {
-  // Add plugin info into block class.
-  $vars['attributes']['class'][] = Html::cleanCssIdentifier($vars['plugin_id']);
-  // Preprocess custom blocks.
-  if (!empty($vars['elements']['content']['#block_content'])) {
-    $block = $vars['elements']['content']['#block_content'];
-    $block_type = $block->bundle();
-    // Add block type to class.
-    $vars['attributes']['class'][] = Html::cleanCssIdentifier('block-' . $block_type);
+ function provus_blocks_preprocess_block(&$vars) {
+   // Add plugin info into block class.
+   $vars['attributes']['class'][] = Html::cleanCssIdentifier($vars['plugin_id']);
+   // Preprocess custom blocks.
+   if (!empty($vars['elements']['content']['#block_content'])) {
+     $block = $vars['elements']['content']['#block_content'];
+     $block_type = $block->bundle();
+     // Add block type to class.
+     $vars['attributes']['class'][] = Html::cleanCssIdentifier('block-' . $block_type);
 
-    if ($block_type == 'provus_heading') {
-      $vars['heading_level'] = $block->get('field_provus_heading_level')->value;
-    }
-    elseif ($block_type == 'provus_card') {
-      $display_mode = !empty($vars['elements']['content']['#provus_group_item_display']) ? $vars['elements']['content']['#provus_group_item_display'] : $block->get('field_provus_item_display')->value;
-      $vars['cardstyle'] = provus_blocks_get_cardstyle_from_displaymode($display_mode);
-    }
-    elseif ($block_type == 'provus_accordion' || $block_type == 'provus_tabs') {
-      _provus_preprocess_accordiontabs($vars, $block);
-    }
-    if ($block_type == 'provus_tabs') {
-      $vars['orientation'] = $block->get('field_provus_orientation')->value;
-    }
-  }
-}
+     if ($block_type == 'provus_heading') {
+       $vars['heading_level'] = $block->get('field_provus_heading_level')->value;
+     }
+     elseif ($block_type == 'provus_card') {
+       $display_mode = !empty($vars['elements']['content']['#provus_group_item_display']) ? $vars['elements']['content']['#provus_group_item_display'] : $block->get('field_provus_item_display')->value;
+       $vars['cardstyle'] = provus_blocks_get_cardstyle_from_displaymode($display_mode);
+     }
+     elseif ($block_type == 'provus_accordion' || $block_type == 'provus_tabs') {
+       _provus_preprocess_accordiontabs($vars, $block);
+     }
+     if ($block_type == 'provus_tabs') {
+       $vars['orientation'] = $block->get('field_provus_orientation')->value;
+     }
+   }
+ }
 
 /**
  * Implements hook_form_alter().
