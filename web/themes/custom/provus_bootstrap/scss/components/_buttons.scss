@@ -32,6 +32,11 @@
       border-color: $secondary-dark;
     }
   }
+  &.form-control {
+    width: auto;
+    display: inline-block;
+    margin-right: $card-spacing;
+  }
 }
 
 .btn-outline {

@@ -1,11 +1,11 @@
 displays:
   card:
     name: 'Card | Default'
-    cardstyle:
-      bg_image: false
-      horizontal: false
+    cardstyle: { }
   card_left:
     name: 'Card | Image Left'
     cardstyle:
-      bg_image: false
       horizontal: true
+  card_bg:
+    name: 'Card | Image Background'
+    cardstyle: { }
