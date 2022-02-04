@@ -6,7 +6,7 @@ blockquote,
   margin: 0;
   padding-left: 25px;
   padding-right: 25px;
-  color: $heading;
+  color: $heading-color;
   font-size: 2rem;
   font-weight: 300;
   letter-spacing: 0.7px;
@@ -14,15 +14,17 @@ blockquote,
   text-shadow: 0 0 20px 0 $white;
 }
 
+// Muted colors
 .text-muted {
   color: $secondary-shade;
 }
 
+// List Groups
 .list-group {
   border-radius: calc(0.25rem - 1px);
   overflow: hidden;
   .list-group-item {
-    padding: 1rem;
+    padding: 1rem $card-spacing;
     color: $primary-shade;
     text-decoration: none;
     &.active {

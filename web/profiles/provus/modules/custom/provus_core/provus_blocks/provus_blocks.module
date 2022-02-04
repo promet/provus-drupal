@@ -65,6 +65,10 @@ function provus_blocks_theme() {
       'template' => 'block--provus-card',
       'base hook' => 'block'
     ],
+    'block__provus_card__provus_display_card_left' => [
+      'template' => 'block--provus-card--provus-display-card-left',
+      'base hook' => 'block'
+    ],
     'block__provus_accordion' => [
       'template' => 'block--provus-accordion',
       'base hook' => 'block'
