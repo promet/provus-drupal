@@ -1,5 +1,5 @@
 {
-    "name": "promet-source/provus-drupal",
+    "name": "promet-provus/provus-drupal",
     "description": "Install Provus Drupal kickstarter by Promet Source.",
     "type": "project",
     "license": "MIT",
