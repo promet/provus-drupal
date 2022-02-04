@@ -1,8 +1,0 @@
-uuid: f449c7a5-c7a7-4b97-93fe-99237b3163d5
-langcode: en
-status: true
-dependencies: {  }
-id: utility-menu
-label: 'Utility Menu'
-description: ''
-locked: false
