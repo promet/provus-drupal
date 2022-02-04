@@ -3770,6 +3770,121 @@
             }
         },
         {
+            "name": "drupal/date_recur",
+            "version": "3.1.0",
+            "source": {
+                "type": "git",
+                "url": "https://git.drupalcode.org/project/date_recur.git",
+                "reference": "3.1.0"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://ftp.drupal.org/files/projects/date_recur-3.1.0.zip",
+                "reference": "3.1.0",
+                "shasum": "bc2c1fa7825b8b88bf5624fcaef30aa0b9aca5f2"
+            },
+            "require": {
+                "drupal/core": "^9",
+                "php": ">=7.4 <8.1",
+                "rlanvin/php-rrule": "1.*"
+            },
+            "require-dev": {
+                "dealerdirect/phpcodesniffer-composer-installer": "dev-master",
+                "drupal/coder": "^8.3",
+                "drupal/token": "^1.5",
+                "mglaman/phpstan-drupal": "^1",
+                "phpstan/phpstan": "^1",
+                "phpstan/phpstan-deprecation-rules": "*"
+            },
+            "suggest": {
+                "drupal/date_recur_interactive": "Provides an interactive recurring date widget."
+            },
+            "type": "drupal-module",
+            "extra": {
+                "drupal": {
+                    "version": "3.1.0",
+                    "datestamp": "1643545755",
+                    "security-coverage": {
+                        "status": "covered",
+                        "message": "Covered by Drupal's security advisory policy"
+                    }
+                }
+            },
+            "notification-url": "https://packages.drupal.org/8/downloads",
+            "license": [
+                "GPL-2.0+"
+            ],
+            "authors": [
+                {
+                    "name": "Frando",
+                    "homepage": "https://www.drupal.org/user/21850"
+                },
+                {
+                    "name": "dpi",
+                    "homepage": "https://www.drupal.org/user/81431"
+                }
+            ],
+            "description": "Recurring Dates Field",
+            "homepage": "https://www.drupal.org/project/date_recur",
+            "keywords": [
+                "Drupal"
+            ],
+            "support": {
+                "source": "http://cgit.drupalcode.org/date_recur",
+                "issues": "https://www.drupal.org/project/issues/date_recur"
+            }
+        },
+        {
+            "name": "drupal/date_recur_modular",
+            "version": "3.0.1",
+            "source": {
+                "type": "git",
+                "url": "https://git.drupalcode.org/project/date_recur_modular.git",
+                "reference": "3.0.1"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://ftp.drupal.org/files/projects/date_recur_modular-3.0.1.zip",
+                "reference": "3.0.1",
+                "shasum": "9b6c2da80024a9ada6c63349219ad4bc129331ee"
+            },
+            "require": {
+                "drupal/core": "^9",
+                "drupal/date_recur": "^3",
+                "php": ">=7.3"
+            },
+            "type": "drupal-module",
+            "extra": {
+                "drupal": {
+                    "version": "3.0.1",
+                    "datestamp": "1638549496",
+                    "security-coverage": {
+                        "status": "covered",
+                        "message": "Covered by Drupal's security advisory policy"
+                    }
+                }
+            },
+            "notification-url": "https://packages.drupal.org/8/downloads",
+            "license": [
+                "GPL-2.0+"
+            ],
+            "authors": [
+                {
+                    "name": "dpi",
+                    "homepage": "https://www.drupal.org/user/81431"
+                }
+            ],
+            "description": "Recurring Date Fields Modular Widgets",
+            "homepage": "https://www.drupal.org/project/date_recur_modular",
+            "keywords": [
+                "Drupal"
+            ],
+            "support": {
+                "source": "http://cgit.drupalcode.org/date_recur_modular",
+                "issues": "https://www.drupal.org/project/issues/date_recur_modular"
+            }
+        },
+        {
             "name": "drupal/default_content",
             "version": "1.0.0-alpha9",
             "source": {
@@ -4661,59 +4776,6 @@
                 "source": "https://cgit.drupalcode.org/focal_point",
                 "issues": "https://drupal.org/project/issues/focal_point",
                 "irc": "irc://irc.freenode.org/drupal-contribute"
-            }
-        },
-        {
-            "name": "drupal/fullcalendar_view",
-            "version": "5.1.2",
-            "source": {
-                "type": "git",
-                "url": "https://git.drupalcode.org/project/fullcalendar_view.git",
-                "reference": "5.1.2"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://ftp.drupal.org/files/projects/fullcalendar_view-5.1.2.zip",
-                "reference": "5.1.2",
-                "shasum": "52309d725a9e6dc80b03fd883ba78fb675dec947"
-            },
-            "require": {
-                "drupal/core": "^8 || ^9"
-            },
-            "type": "drupal-module",
-            "extra": {
-                "drupal": {
-                    "version": "5.1.2",
-                    "datestamp": "1629420252",
-                    "security-coverage": {
-                        "status": "covered",
-                        "message": "Covered by Drupal's security advisory policy"
-                    }
-                }
-            },
-            "notification-url": "https://packages.drupal.org/8/downloads",
-            "license": [
-                "GPL-2.0+"
-            ],
-            "authors": [
-                {
-                    "name": "KarinG",
-                    "homepage": "https://www.drupal.org/user/787114"
-                },
-                {
-                    "name": "Mingsong",
-                    "homepage": "https://www.drupal.org/user/2986445"
-                }
-            ],
-            "description": "This is a lightweight View plugin module that provides a calendar view format powered by FullCalendar JavaScript.",
-            "homepage": "http://drupal.org/project/fullcalendar_view",
-            "keywords": [
-                "Drupal",
-                "fullcalendar_view"
-            ],
-            "support": {
-                "source": "http://cgit.drupalcode.org/fullcalendar_view",
-                "issues": "http://drupal.org/project/issues/fullcalendar_view"
             }
         },
         {
@@ -9372,7 +9434,7 @@
             "dist": {
                 "type": "path",
                 "url": "upstream-configuration",
-                "reference": "09ddef1410ec88ed89e3db007bfd746d5cf60822"
+                "reference": "fe494769e6d2d850f21d61c2d8af70d6f5019966"
             },
             "require": {
                 "drupal/address": "^1.9",
@@ -9383,6 +9445,8 @@
                 "drupal/calendar_link": "^2.1",
                 "drupal/chosen": "^3.0",
                 "drupal/config_ignore": "^2.3",
+                "drupal/date_recur": "3.1.0",
+                "drupal/date_recur_modular": "3.0.1",
                 "drupal/devel": "^4.1",
                 "drupal/entity": "^1.2",
                 "drupal/entity_embed": "^1.2",
@@ -9391,7 +9455,6 @@
                 "drupal/facets": "^2.0",
                 "drupal/field_group": "^3.2",
                 "drupal/focal_point": "^1.5",
-                "drupal/fullcalendar_view": "^5.1",
                 "drupal/geocoder": "^3.24",
                 "drupal/geofield": "^1.36",
                 "drupal/geofield_map": "^2.71",
@@ -10693,6 +10756,54 @@
                 "source": "https://github.com/ralouphie/getallheaders/tree/develop"
             },
             "time": "2019-03-08T08:55:37+00:00"
+        },
+        {
+            "name": "rlanvin/php-rrule",
+            "version": "v1.6.3",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/rlanvin/php-rrule.git",
+                "reference": "1373df401e0926cf7548716dabbc0d19603a144d"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/rlanvin/php-rrule/zipball/1373df401e0926cf7548716dabbc0d19603a144d",
+                "reference": "1373df401e0926cf7548716dabbc0d19603a144d",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.0"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "^4.8|^5.5|^6.5"
+            },
+            "suggest": {
+                "ext-intl": "Intl extension is needed for humanReadable()"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "RRule\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "description": "Lightweight and fast recurrence rules for PHP (RFC 5545)",
+            "homepage": "https://github.com/rlanvin/php-rrule",
+            "keywords": [
+                "date",
+                "ical",
+                "recurrence",
+                "recurring",
+                "rrule"
+            ],
+            "support": {
+                "issues": "https://github.com/rlanvin/php-rrule/issues",
+                "source": "https://github.com/rlanvin/php-rrule/tree/v1.6.3"
+            },
+            "time": "2019-01-13T09:49:03+00:00"
         },
         {
             "name": "solarium/solarium",
