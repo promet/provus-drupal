@@ -1,4 +1,3 @@
-uuid: 3d5181e7-4f9b-4a8a-9ba3-1494e8267d8b
 langcode: en
 status: true
 dependencies:
@@ -8,8 +7,6 @@ dependencies:
     - system
   theme:
     - bootstrap_sass
-_core:
-  default_config_hash: TszJ7dH_11Qjmo_OpMzqznaED4Bvy1XfVnBzTC9LZXE
 id: bootstrap_sass_tools
 theme: bootstrap_sass
 region: sidebar_first

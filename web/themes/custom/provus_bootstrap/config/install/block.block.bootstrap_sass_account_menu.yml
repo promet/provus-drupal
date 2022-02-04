@@ -1,4 +1,3 @@
-uuid: 4d026b85-0100-474f-a1aa-51b1e1520e3d
 langcode: en
 status: true
 dependencies:
@@ -8,8 +7,6 @@ dependencies:
     - system
   theme:
     - bootstrap_sass
-_core:
-  default_config_hash: jzu74Q7R0QWgw8IniA9HZRSb_a8RPak1M0q5J-VGkZI
 id: bootstrap_sass_account_menu
 theme: bootstrap_sass
 region: secondary_menu

@@ -1,11 +1,8 @@
-uuid: 42ccd5db-be37-4871-aa85-946126fbb40d
 langcode: en
 status: true
 dependencies:
   theme:
     - bootstrap_sass
-_core:
-  default_config_hash: Qf2BoIzd9py5AYXZj8fJzCYDyVk1-AWXcu-AqQeDZKA
 id: bootstrap_sass_local_tasks
 theme: bootstrap_sass
 region: content

@@ -1,11 +1,8 @@
-uuid: b325483d-c3a2-4128-8b87-323299dccd16
 langcode: en
 status: true
 dependencies:
   theme:
     - bootstrap_barrio
-_core:
-  default_config_hash: XRdb8LpbArVA6CpuuEZxzi50JIdjsJaCCZ5o3fH0Blk
 id: bootstrap_barrio_local_actions
 theme: bootstrap_barrio
 region: content
