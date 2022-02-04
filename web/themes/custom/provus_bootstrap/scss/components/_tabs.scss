@@ -6,6 +6,7 @@
 
 .nav-item {
   .nav-link {
+    color: $secondary-shade;
     &:hover,
     &:focus {
       text-decoration: underline;

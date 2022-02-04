@@ -9,8 +9,17 @@
 
 .card {
   border-radius: $card-border-radius;
-  padding: $card-spacing;
   border: 1px solid $card-border-color;
+  .field--name-field-provus-links {
+    .field__item {
+      display: inline-block;
+      margin-right: $card-spacing;
+    }
+  }
+  .card-body,
+  .card-header {
+    padding: $card-spacing;
+  }
 }
 
 .card-header {
