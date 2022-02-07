@@ -1,4 +1,3 @@
-uuid: fcfe4c5f-0418-4fd7-855a-1da8179ea1df
 langcode: en
 status: true
 dependencies:
@@ -6,8 +5,6 @@ dependencies:
     - system
   theme:
     - bootstrap_barrio
-_core:
-  default_config_hash: y0bXRvKYQQKkf_RVxA3aOPGpIfKKsDOzzrWYCgjxJ9Y
 id: provus_bootstrap_breadcrumbs
 theme: provus_bootstrap
 region: breadcrumb

@@ -44,8 +44,8 @@
   {% endif %}
   {{ title_suffix }}
   {% block content %}
-    {% if content.field_title|render %}
-      <h2 class="card-title">{{ content.field_title }}</h2>
+    {% if content.field_provus_title|render %}
+      <h2 class="card-title">{{ content.field_provus_title }}</h2>
     {% endif %}
     <div{{ content_attributes.addClass(rowclass) }}>
       {% for block in blocks %}
@@ -54,6 +54,6 @@
         </div>
       {% endfor %}
     </div>
-    {{ content.field_link }}
+    {{ content.field_provus_links }}
   {% endblock %}
 </div>

@@ -1,4 +1,3 @@
-uuid: 5beef267-878a-4c4c-93d3-b43bfaa5121c
 langcode: en
 status: true
 dependencies:
@@ -8,8 +7,6 @@ dependencies:
     - system
   theme:
     - bootstrap_barrio
-_core:
-  default_config_hash: jzu74Q7R0QWgw8IniA9HZRSb_a8RPak1M0q5J-VGkZI
 id: provus_bootstrap_account_menu
 theme: provus_bootstrap
 region: secondary_menu

@@ -1,4 +1,3 @@
-uuid: 8740df03-812d-48e9-afdb-bfd5ec038738
 langcode: en
 status: true
 dependencies:
@@ -6,8 +5,6 @@ dependencies:
     - search
   theme:
     - bootstrap_barrio
-_core:
-  default_config_hash: jQ-C8l3dJPqYCGST1e-kSjR14PDP4wq-iFbp8dMFcRo
 id: bootstrap_barrio_search
 theme: bootstrap_barrio
 region: sidebar_first
