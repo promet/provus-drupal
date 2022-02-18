@@ -1,10 +1,5 @@
 language: php
-dist: trusty
-sudo: required
-
-cache:
-  directories:
-    - $HOME/.composer/cache/files
+dist: xenial
 
 services:
   - docker
@@ -12,9 +7,16 @@ services:
 php:
   - 7.4
 
+script:
+- echo "skipping tests"
+
 env:
   global:
-    - DRUPAL_BASE_URL="http://127.0.0.1:8080"
+    - XDEBUG_MODE=coverage
+
+before_install:
+  - echo -e "Host codeserver.dev.8b106de4-5eae-4105-9881-834d33a72e16.drush.in\nStrictHostKeyChecking no\n" >> ~/.ssh/config #put in travis config.
 
 install:
-  - composer --verbose install  
+  # - composer --verbose install
+  - .travis/deploy.sh
