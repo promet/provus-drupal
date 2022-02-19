@@ -1,5 +1,6 @@
 #!/usr/bin/env bash
 CURRENT_BRANCH=`git name-rev --name-only HEAD`
+TERMINUS_BIN=scripts/bin/terminus
 
 quiet_git() {
   stdout=$(tempfile)
