@@ -61,7 +61,7 @@ else
   quiet_git add -f vendor web pantheon*
   quiet_git commit -m "TRAVIS JOB: $TRAVIS_JOB_ID - $TRAVIS_COMMIT_MESSAGE"
   git push pantheon $PANTHEON_ENV --force
-  p_ENV = $PANTHEON_ENV
+  P_ENV = $PANTHEON_ENV
 fi
 
 #$TERMINUS_BIN drush -n $PANTHEON_SITE_ID.$P_ENV cim -y
