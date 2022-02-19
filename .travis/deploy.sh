@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
+CURRENT_BRANCH=`git name-rev --name-only HEAD`
 
 quiet_git() {
   stdout=$(tempfile)
