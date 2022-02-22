@@ -64,5 +64,19 @@ else
   P_ENV=$PANTHEON_ENV
 fi
 
-#$TERMINUS_BIN drush -n $PANTHEON_SITE_ID.$P_ENV cim -y
-$TERMINUS_BIN drush -n $PANTHEON_SITE_ID.$P_ENV updb -y
+# Checkign for config in the /confif/default directory 
+if [ -f config/default/system.site.yml ] then
+  if $TERMINUS_BIN drush -n $PANTHEON_SITE_ID.$P_ENV cim -y
+    then
+    echo "Config imported sucessfully"
+  else 
+    exit 0
+  fi
+fi
+
+if $TERMINUS_BIN drush -n $PANTHEON_SITE_ID.$P_ENV updb -y
+  then
+  echo "Database updates ran sucessfully"
+else
+  exit 0
+fi 
