@@ -15,8 +15,6 @@ quiet_git() {
   rm -f $stdout $stderr
 }
 
-# #If not the defined branch - IE: PR submissions.. create a new MD and push there... ya? 
-
 echo "Logging into Terminus"
 $TERMINUS_BIN auth:login --machine-token=$SECRET_TERMINUS_TOKEN
 $TERMINUS_BIN connection:set $PANTHEON_SITE_ID.$PANTHEON_ENV git
@@ -27,56 +25,50 @@ git remote add pantheon $PANTHEON_REPO
 echo "Waking Pantheon $PANTHEON_SITE_ID Dev environment."
 $TERMINUS_BIN env:wake -n $PANTHEON_SITE_ID.$PANTHEON_ENV
 
+echo "... Pulling git"
+git pull
+
 echo "...Run composer install"
 composer install
 
-echo "..remove .git dir from menu_block module"
-rm -rf web/modules/contrib/menu_block/.git
+echo "...remove nested .git dirs from web and vendor directories recursively"
+find web/ | grep .git | xargs rm -rf
+find vendor/ | grep .git | xargs rm -rf
 
 if [ "$CURRENT_BRANCH" != "$PANTHEON_ENV" ]; then
-    # if [ `git branch --list $branch_name` ]
-    # then
-    # echo "Branch name $branch_name already exists."
-    # fi
-
+  #PANTHEON
+  echo "...Building / deploying to pantheon"
   echo "...Building Mutlidev ci-$TRAVIS_PULL_REQUEST"
-  echo "... delete MD if it already exists"
+  echo "...Delete MD if it already exists"
   $TERMINUS_BIN multidev:delete $PANTHEON_SITE_ID.ci-$TRAVIS_PULL_REQUEST --delete-branch --yes
   $TERMINUS_BIN multidev:create $PANTHEON_SITE_ID.$PANTHEON_ENV ci-$TRAVIS_PULL_REQUEST --yes
 
   cp hosting/pantheon/* .
-  echo "...switch to new ci-$TRAVIS_PULL_REQUEST branch locally"
+  echo "...Switch to new ci-$TRAVIS_PULL_REQUEST branch locally"
   git checkout -b ci-$TRAVIS_PULL_REQUEST
-  echo "...add the new files"
+  echo "...Add the new files"
   quiet_git add -f vendor/* web/* pantheon*
   quiet_git commit -m "Artifacts for build ci-$TRAVIS_PULL_REQUEST"
-  echo "...push to pantheon"
+  echo "...Push to pantheon"
   git push pantheon ci-$TRAVIS_PULL_REQUEST --force
   P_ENV="ci-$TRAVIS_PULL_REQUEST"
   sleep 60
 else 
-  echo "...copy pantheon files to root"
+  echo "...Copy pantheon files to root"
   cp hosting/pantheon/* .
   git checkout $PANTHEON_ENV
-  quiet_git add -f vendor web pantheon*
+  quiet_git add -f vendor/* web/* pantheon*
   quiet_git commit -m "TRAVIS JOB: $TRAVIS_JOB_ID - $TRAVIS_COMMIT_MESSAGE"
   git push pantheon $PANTHEON_ENV --force
   P_ENV=$PANTHEON_ENV
 fi
+echo "========================================="
+echo "...Importing config"
+echo "========================================="
+$TERMINUS_BIN drush -n $PANTHEON_SITE_ID.$P_ENV cim -y
+echo "========================================="
+echo "...Running update DB"
+echo "========================================="
+$TERMINUS_BIN drush -n $PANTHEON_SITE_ID.$P_ENV updb -y
 
-# Checkign for config in the /confif/default directory 
-if [ -f config/default/system.site.yml ] then
-  if $TERMINUS_BIN drush -n $PANTHEON_SITE_ID.$P_ENV cim -y
-    then
-    echo "Config imported sucessfully"
-  else 
-    exit 0
-  fi
-fi
 
-if $TERMINUS_BIN drush -n $PANTHEON_SITE_ID.$P_ENV updb -y
-  then
-  echo "Database updates ran sucessfully"
-else
-  exit 0
-fi 
