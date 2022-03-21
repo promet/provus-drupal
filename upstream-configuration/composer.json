@@ -1,5 +1,5 @@
 {
-    "name": "pantheon-upstreams/upstream-configuration",
+    "name": "provus/upstream-configuration",
     "type": "project",
     "minimum-stability": "dev",
     "repositories": [
@@ -103,7 +103,7 @@
         "drupal/views_bootstrap": "4.3"
     },
     "extra": {
-        "_README": "To make a custom upstream, clone this repository and add any dependencies to be provided by this upstream to this composer.json file. Leave the root-level composer.json file for the exclusive use of each individual site; do not modify it after your custom upstream has been published. See https://pantheon.io/docs/create-custom-upstream for more information."
+        "_README": "Do not edit this config file, Use the composer.json in the project root. See https://provus.io/docs/composer for more information."
     },
     "config": {
         "allow-plugins": {

@@ -35,7 +35,8 @@
         "drupal/layout_library": "^1.0@beta",
         "drupal/linkit": "^6.0@beta",
         "drupal/media_bulk_upload": "^1.0@alpha",
-        "drush/drush": "^10"
+        "drush/drush": "^10",
+        "provus/upstream-configuration": "dev-main"
     },
     "require-dev": {
         "drupal/core-dev": "^9.2"
