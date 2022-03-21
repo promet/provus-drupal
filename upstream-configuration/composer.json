@@ -2,6 +2,7 @@
     "name": "provus/upstream-configuration",
     "type": "project",
     "minimum-stability": "dev",
+    "version": "0.0.10",
     "repositories": [
         {
             "type": "composer",
