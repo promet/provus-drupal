@@ -766,3 +766,4 @@ $settings['migrate_node_migrate_type_classic'] = FALSE;
  * Keep this code block at the end of this file to take full effect.
  */
 #
+$settings['config_sync_directory'] = '../config/default';
