@@ -10,6 +10,7 @@ dependencies:
   - drupal:text
   - layout_builder
   - layout_builder_modal
+  - layout_builder_restrictions
   - bootstrap_layout_builder
   - bootstrap_styles
   - views_bootstrap

@@ -4,19 +4,16 @@ dependencies:
   config:
     - block_content.type.provus_tabs
     - field.field.block_content.provus_tabs.field_provus_items
+    - field.field.block_content.provus_tabs.field_provus_orientation
   module:
     - inline_entity_form
+_core:
+  default_config_hash: t4UFU1sIrX6jSuEDJwrC64hELoe10Q-thNA5mpFGZdg
 id: block_content.provus_tabs.default
 targetEntityType: block_content
 bundle: provus_tabs
 mode: default
 content:
-  field_provus_orientation:
-    type: options_buttons
-    weight: 1
-    region: content
-    settings: {  }
-    third_party_settings: {  }
   field_provus_items:
     type: inline_entity_form_complex
     weight: 2
@@ -33,6 +30,12 @@ content:
       collapsible: false
       collapsed: false
       revision: false
+    third_party_settings: {  }
+  field_provus_orientation:
+    type: options_buttons
+    weight: 1
+    region: content
+    settings: {  }
     third_party_settings: {  }
   info:
     type: string_textfield

@@ -9,6 +9,7 @@ Description: Bootstrap 4 with Sass
 @import "barrio";
 @import "global/_mixins.scss";
 @import "global/_base.scss";
+@import "admin/*.scss";
 @import "components/*.scss";
 @import "layout/*.scss";
 @import "content-types/*.scss";

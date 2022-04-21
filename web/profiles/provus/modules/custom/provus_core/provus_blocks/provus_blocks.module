@@ -61,6 +61,14 @@ function provus_blocks_theme() {
       'template' => 'block--provus-heading',
       'base hook' => 'block'
     ],
+    'block__provus_list' => [
+      'template' => 'block--provus-list',
+      'base hook' => 'block'
+    ],
+    'block__provus_list_item' => [
+      'template' => 'block--provus-list-item',
+      'base hook' => 'block'
+    ],
     'block__provus_card' => [
       'template' => 'block--provus-card',
       'base hook' => 'block'
@@ -81,6 +89,14 @@ function provus_blocks_theme() {
       'template' => 'block--provus-tabs',
       'base hook' => 'block'
     ],
+    'block__provus_stat_group' => [
+      'template' => 'block--provus-stat-group',
+      'base hook' => 'block'
+    ],
+    'block__provus_divider_line' => [
+      'template' => 'block--provus-divider-line',
+      'base hook' => 'block'
+    ],
   ];
 }
 
@@ -97,18 +113,25 @@ function provus_blocks_theme() {
      // Add block type to class.
      $vars['attributes']['class'][] = Html::cleanCssIdentifier('block-' . $block_type);
 
-     if ($block_type == 'provus_heading') {
-       $vars['heading_level'] = $block->get('field_provus_heading_level')->value;
-     }
-     elseif ($block_type == 'provus_card') {
+     if ($block_type == 'provus_card') {
        $display_mode = !empty($vars['elements']['content']['#provus_group_item_display']) ? $vars['elements']['content']['#provus_group_item_display'] : $block->get('field_provus_item_display')->value;
        $vars['cardstyle'] = provus_blocks_get_cardstyle_from_displaymode($display_mode);
      }
-     elseif ($block_type == 'provus_accordion' || $block_type == 'provus_tabs') {
-       _provus_preprocess_accordiontabs($vars, $block);
+     elseif ($block_type == 'provus_tabs') {
+       _provus_preprocess_tabs($vars, $block);
      }
-     if ($block_type == 'provus_tabs') {
-       $vars['orientation'] = $block->get('field_provus_orientation')->value;
+     elseif ($block_type == 'provus_accordion') {
+       _provus_preprocess_accordion($vars, $block);
+     }
+     elseif ($block_type == 'provus_stat_group') {
+       _provus_preprocess_blocks($vars, $block, 'field_provus_items');
+     }
+     if ($block_type == 'provus_list') {
+       _provus_preprocess_blocks($vars, $block, 'field_provus_list_items');
+       // Get list orientation display.
+       $group_display = $block->get('field_provus_list_orientation')->value;
+       $display_type = explode('_', $group_display);
+       $vars['group_number'] = !empty($display_type[1]) ? $display_type[1] : NULL;
      }
    }
  }
@@ -125,6 +148,7 @@ function provus_blocks_form_alter(&$form, FormStateInterface $form_state, $form_
     'layout_builder_add_block',
     'layout_builder_update_block'
   ];
+
   if (in_array($form_id, $form_ids_blockcontent) && !empty($form['settings']['block_form']['#block'])) {
     $block = $form['settings']['block_form']['#block'];
     $block_type = $block->bundle();
@@ -197,16 +221,16 @@ function provus_blocks_get_cardstyle_from_displaymode($display_mode) {
 }
 
 /**
- * Preprocess function for accordion and tabs.
+ * Preprocess function for accordions.
  */
-function _provus_preprocess_accordiontabs(&$vars, $block) {
+function _provus_preprocess_accordion(&$vars, $block) {
   $storage = \Drupal::entityTypeManager()->getStorage('block_content');
   $vars['id'] = $block->uuid();
   // If we have an accordion, we have an option for open first item initially.
   if ($block->hasField('field_provus_openfirst')) {
     $vars['openfirst'] = $block->get('field_provus_openfirst')->value;
   }
-  // Loop through the accordion or tabs items and store each item in a variable
+  // Loop through the accordion and store each item in a variable
   // for the accordion block to render in it's template.
   $id_array = $block->get('field_provus_items')->getValue();
   if (!empty($id_array)) {
@@ -217,6 +241,64 @@ function _provus_preprocess_accordiontabs(&$vars, $block) {
           ->value;
         $vars['items'][$key]['content'] = $entity->get('field_provus_body')
           ->view('default');
+      }
+    }
+  }
+}
+
+/**
+ * Preprocess function for tabs.
+ */
+function _provus_preprocess_tabs(&$vars, $block) {
+  $vars['orientation'] = $block->get('field_provus_orientation')->value;
+  $storage = \Drupal::entityTypeManager()->getStorage('block_content');
+  $vars['id'] = $block->uuid();
+  // Loop through the tabs items and store each item in a variable
+  // for the accordion block to render in it's template.
+  $id_array = $block->get('field_provus_items')->getValue();
+  if (!empty($id_array)) {
+    foreach ($id_array as $key => $id) {
+      $entity = $storage->load($id['target_id']);
+      if ($entity) {
+        $vars['items'][$key]['title'] = $entity->get('field_provus_title')
+          ->value;
+        // Get block items inside of tab item.
+        $blocks = [];
+        $view_builder = \Drupal::entityTypeManager()->getViewBuilder('block_content');
+        $storage = \Drupal::entityTypeManager()->getStorage('block_content');
+        $blocks_id_array = $entity->get('field_provus_items')->getValue();
+        if (!empty($blocks_id_array)) {
+          foreach ($blocks_id_array as $block_key => $block_id) {
+            $block_entity = $storage->load($block_id['target_id']);
+            if (!empty($entity)) {
+              $block_build['content'] = $view_builder->view($block_entity, 'default');
+              provus_blocks_get_block($block_build, $block_entity);
+              $blocks[] = $block_build;
+            }
+          }
+        }
+        $vars['items'][$key]['content'] = $blocks;
+      }
+    }
+  }
+}
+
+/**
+ * Preprocess function for getting entity reference rendered blocks.
+ */
+function _provus_preprocess_blocks(&$vars, $block, $fieldname) {
+  $storage = \Drupal::entityTypeManager()->getStorage('block_content');
+  $view_builder = \Drupal::entityTypeManager()->getViewBuilder('block_content');
+  // Loop through the stat items.
+  $id_array = $block->get($fieldname)->getValue();
+  if (!empty($id_array)) {
+    foreach ($id_array as $key => $id) {
+      $entity = $storage->load($id['target_id']);
+      if ($entity) {
+        // Get block items inside of stat item.
+        $block_build['content'] = $view_builder->view($entity, 'default');
+        provus_blocks_get_block($block_build, $entity);
+        $vars['blocks'][] = $block_build;
       }
     }
   }

@@ -11,6 +11,12 @@ type: list_string
 settings:
   allowed_values:
     -
+      value: carousel
+      label: 'Carousel'
+    -
+      value: featured_4
+      label: '4 Card Featured'
+    -
       value: column
       label: 'Column Row'
     -

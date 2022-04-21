@@ -1,0 +1,35 @@
+<?php
+
+/**
+ * @file
+ * Contains provus_blocks_group.module.
+ */
+
+/**
+ * Implements hook_install.
+ */
+function provus_blocks_group_install($is_syncing) {
+  // Add provus_group to be available in tabs.
+  _provus_blocks_group_update_tab_items();
+}
+
+/**
+ * Add provus_group to be available in tabs.
+ */
+function provus_blocks_group_update_9001() {
+  _provus_blocks_group_update_tab_items();
+}
+
+/**
+ * Add provus_group to be available in tabs.
+ */
+function _provus_blocks_group_update_tab_items() {
+  $config = \Drupal::service('config.factory');
+  $field = 'field.field.block_content.provus_tab_item.field_provus_items';
+  $data = $config->getEditable($field)->get();
+  if (!empty($data)) {
+    $data['settings']['handler_settings']['target_bundles']['provus_group'] = 'provus_group';
+    $data['dependencies']['config'] = 'block_content.type.provus_group';
+    $config->getEditable($field)->setData($data)->save();
+  }
+}

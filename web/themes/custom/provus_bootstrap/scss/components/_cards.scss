@@ -25,3 +25,40 @@
 .card-header {
   padding: 1rem $card-spacing;
 }
+
+// 4 Card featured
+.four-card-featured-group-wrapper {
+  display: block;
+  @include media-breakpoint-up(md) {
+    display: flex;
+  }
+  .card {
+    border: none;
+  }
+  .content-left {
+    width: 100%;
+    @include media-breakpoint-up(md) {
+      width: 50%;
+      padding-right: rem-calc(30);
+      .card {
+        .card-body {
+          padding-left: 0;
+        }
+      }
+    }
+  }
+  .content-right {
+    width: 100%;
+    @include media-breakpoint-up(md) {
+      width: 50%;
+      border-left: 1px solid $gray-lightest;
+      padding-left: rem-calc(30);
+      .card {
+        .card-body {
+          padding-top: 0;
+        }
+        margin-bottom: rem-calc(30);
+      }
+    }
+  }
+}

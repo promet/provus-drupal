@@ -1,0 +1,23 @@
+uuid: c1385f7c-2607-452c-93ad-00ffc1f78b2f
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.provus_cta
+    - field.storage.block_content.field_provus_show_icon
+id: block_content.provus_cta.field_provus_show_icon
+field_name: field_provus_show_icon
+entity_type: block_content
+bundle: provus_cta
+label: 'Show Icon'
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    value: 0
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean
