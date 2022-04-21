@@ -2,9 +2,11 @@ langcode: en
 status: true
 dependencies:
   config:
-    - block_content.type.provus_basic_text
+    - block_content.type.provus_tab_item
     - block_content.type.provus_tabs
     - field.storage.block_content.field_provus_items
+_core:
+  default_config_hash: mUQdreNnSUAI2Bcc_RoExD38yAFb5p-dNG0FufYvJhg
 id: block_content.provus_tabs.field_provus_items
 field_name: field_provus_items
 entity_type: block_content
@@ -19,10 +21,10 @@ settings:
   handler: 'default:block_content'
   handler_settings:
     target_bundles:
-      provus_basic_text: provus_basic_text
+      provus_tab_item: provus_tab_item
     sort:
       field: _none
       direction: ASC
     auto_create: false
-    auto_create_bundle: ''
+    auto_create_bundle: provus_basic_text
 field_type: entity_reference

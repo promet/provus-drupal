@@ -34,6 +34,8 @@
     'block',
     'block-' ~ configuration.provider|clean_class,
     'block-' ~ plugin_id|clean_class,
+    'block-align-' ~ content.field_provus_alignment[0]['#markup']|clean_class,
+    'block-decorative-line-' ~ content.field_provus_decorative_line[0]['#markup']|clean_class,
   ]
 %}
 
@@ -44,6 +46,6 @@
   {% endif %}
   {{ title_suffix }}
   {% block content %}
-    <{{ heading_level|raw }} class="title">{{ content.field_provus_title }}</{{ heading_level }}>
+    <{{ content.field_provus_heading_level[0]['#markup'] }} class="title">{{ content.field_provus_title }}</{{ content.field_provus_heading_level[0]['#markup'] }}>
   {% endblock %}
 </div>

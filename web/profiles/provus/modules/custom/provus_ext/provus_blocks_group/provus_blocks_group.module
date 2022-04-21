@@ -53,6 +53,14 @@ function provus_blocks_group_theme() {
       'template' => 'block--provus-group',
       'base hook' => 'block'
     ],
+    'block__provus_group__carousel' => [
+      'template' => 'block--provus-group--carousel',
+      'base hook' => 'block'
+    ],
+    'block__provus_group__featured_4' => [
+      'template' => 'block--provus-group--featured-4',
+      'base hook' => 'block'
+    ],
   ];
 }
 
@@ -82,8 +90,20 @@ function provus_blocks_group_preprocess_block(&$vars) {
             $block_build['content'] = $view_builder->view($entity, 'default');
             // Add a custom variable to check in block preprocess.
             $block_build['content']['#provus_group_item_display'] = $vars['display_content'];
+            if ($group_display == 'featured_4' && $key == 0) {
+              $block_build['content']['#provus_group_item_display'] = 'card';
+            }
+            elseif ($group_display == 'featured_4' && $key > 0) {
+              $block_build['content']['#provus_group_item_display'] = 'card_left';
+            }
+
             provus_blocks_get_block($block_build, $entity);
-            $vars['blocks'][] = $block_build;
+            if ($group_display == 'featured_4' && $key == 0) {
+              $vars['block_1'] = $block_build;
+            }
+            else {
+              $vars['blocks'][] = $block_build;
+            }
           }
         }
       }

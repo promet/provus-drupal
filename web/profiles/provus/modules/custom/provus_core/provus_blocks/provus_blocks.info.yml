@@ -11,6 +11,8 @@ dependencies:
   - drupal:text
   - layout_builder
   - inline_entity_form
+  - addtoany
   - ala
+  - fontawesome_iconpicker_widget
   - media
   - media_library
