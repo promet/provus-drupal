@@ -12,7 +12,9 @@ dependencies:
   - layout_builder
   - inline_entity_form
   - addtoany
+  - auto_entitylabel
   - ala
   - fontawesome_iconpicker_widget
   - media
   - media_library
+  - token

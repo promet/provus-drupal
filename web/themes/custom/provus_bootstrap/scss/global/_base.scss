@@ -40,3 +40,10 @@ body {
 .field-link.center {
   margin-bottom: 0;
 }
+
+hr {
+  height: 1px;
+  color: $primary-shade;
+  margin: rem-calc(80 0);
+  opacity: 1;
+}

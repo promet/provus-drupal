@@ -1,5 +1,5 @@
 layout_builder_theme: light
-background_colors: "bs-bg-success|Green\r\nbs-bg-warning|Yellow\r\nbs-bg-danger|Red\r\nbs-bg-light|Light"
+background_colors: "bg-primary|Primary\r\nbg-secondary|Seconary\r\nbg-white|White\r\nbg-grey|Grey"
 background_image:
   bundle: image
   field: field_media_image

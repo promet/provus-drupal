@@ -104,7 +104,8 @@
         "drupal/views_bootstrap": "4.3",
         "drupal/addtoany": "^1.16",
         "drupal/formtips": "^1.5",
-        "drupal/fontawesome": "^2.22"
+        "drupal/fontawesome": "^2.22",
+        "drupal/bootstrap_site_alert": "^2.0@beta"
     },
     "extra": {
       "_README": "Do not edit this config file, Use the composer.json in the project root. See https://provus.io/docs/composer for more information."

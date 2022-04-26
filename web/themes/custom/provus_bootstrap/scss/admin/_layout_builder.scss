@@ -49,3 +49,11 @@
 .formtips-processed::before {
   border-bottom-color: $white;
 }
+
+.js-hide {
+  width: 0;
+  height: 0;
+  overflow: hidden;
+  opacity: 0;
+  display: none;
+}

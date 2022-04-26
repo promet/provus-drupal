@@ -6,8 +6,6 @@ dependencies:
     - field.storage.block_content.field_provus_orientation
   module:
     - options
-_core:
-  default_config_hash: onZqdNL2X-1yVAF_rSsgT5FPKfCEQAf6DbefpBFAUz0
 id: block_content.provus_tabs.field_provus_orientation
 field_name: field_provus_orientation
 entity_type: block_content

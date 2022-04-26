@@ -5,8 +5,6 @@ dependencies:
     - block_content.type.provus_tabs
     - field.field.block_content.provus_tabs.field_provus_items
     - field.field.block_content.provus_tabs.field_provus_orientation
-_core:
-  default_config_hash: TXBhWq_VIc5QTRefzn0OXj3NzbEHyaA5XbjRafiXPKA
 id: block_content.provus_tabs.default
 targetEntityType: block_content
 bundle: provus_tabs

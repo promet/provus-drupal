@@ -71,6 +71,11 @@
         "composer-exit-on-patch-failure": true,
         "patchLevel": {
             "drupal/core": "-p2"
+        },
+        "patches": {
+            "drupal/auto_entitylabel": {
+                "Integration with Layout Builder for custom block types [3065687]": "https://www.drupal.org/files/issues/2021-07-21/auto_entitylabel-layout_builder_component_title-3065687-16.patch"
+            }
         }
     },
     "config": {

@@ -5,8 +5,6 @@ dependencies:
     - block_content.type.provus_tab_item
     - block_content.type.provus_tabs
     - field.storage.block_content.field_provus_items
-_core:
-  default_config_hash: mUQdreNnSUAI2Bcc_RoExD38yAFb5p-dNG0FufYvJhg
 id: block_content.provus_tabs.field_provus_items
 field_name: field_provus_items
 entity_type: block_content
