@@ -1,0 +1,21 @@
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+id: provus_provus_landing_page
+label: 'Landing Page'
+type: 'canonical_entities:node'
+pattern: '[node:title]'
+selection_criteria:
+  58b15bc6-885e-4214-899a-5009b6094a16:
+    id: node_type
+    negate: false
+    uuid: 58b15bc6-885e-4214-899a-5009b6094a16
+    context_mapping:
+      node: node
+    bundles:
+      provus_landing_page: provus_landing_page
+selection_logic: and
+weight: -5
+relationships: {  }

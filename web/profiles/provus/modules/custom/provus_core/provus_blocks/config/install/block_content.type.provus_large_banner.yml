@@ -1,0 +1,8 @@
+uuid: 2c45b911-e322-4229-a67e-e630110a46db
+langcode: en
+status: true
+dependencies: {  }
+id: provus_large_banner
+label: 'Large Banner'
+revision: 0
+description: ''

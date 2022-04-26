@@ -10,6 +10,9 @@
 .card {
   border-radius: $card-border-radius;
   border: 1px solid $card-border-color;
+  .field--type-entity-reference {
+    margin: 0;
+  }
   .field--name-field-provus-links {
     .field__item {
       display: inline-block;
@@ -60,5 +63,25 @@
         margin-bottom: rem-calc(30);
       }
     }
+  }
+}
+
+.rounded-circle {
+  overflow: hidden;
+  border-radius: 50%;
+  margin: 0 auto;
+  width: rem-calc(200);
+  height: rem-calc(200);
+  border: 1px solid $gray-lightest;
+}
+
+.card-img-overlay {
+  background: rgba(0,0,0,0.5);
+  color: $white;
+  h2, h3, h4, h5 ,h6 {
+    color: $white;
+  }
+  a {
+    color: $white;
   }
 }

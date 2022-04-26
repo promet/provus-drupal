@@ -1,5 +1,0 @@
-name: 'Provus Content'
-type: module
-description: 'Custom provus node integration.'
-core_version_requirement: ^8 || ^9
-package: 'Provus'

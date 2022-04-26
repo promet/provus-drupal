@@ -65,6 +65,14 @@ function provus_blocks_theme() {
       'template' => 'block--provus-list',
       'base hook' => 'block'
     ],
+    'block__provus_short_banner' => [
+      'template' => 'block--provus-short-banner',
+      'base hook' => 'block'
+    ],
+    'block__provus_large_banner' => [
+      'template' => 'block--provus-large-banner',
+      'base hook' => 'block'
+    ],
     'block__provus_list_item' => [
       'template' => 'block--provus-list-item',
       'base hook' => 'block'
@@ -73,8 +81,24 @@ function provus_blocks_theme() {
       'template' => 'block--provus-card',
       'base hook' => 'block'
     ],
+    'block__provus_card__provus_display_card_basic' => [
+      'template' => 'block--provus-card--provus-display-card-basic',
+      'base hook' => 'block'
+    ],
+    'block__provus_card__provus_display_card_basic_plus' => [
+      'template' => 'block--provus-card--provus-display-card-basic-plus',
+      'base hook' => 'block'
+    ],
+    'block__provus_card__provus_display_card_image_circle' => [
+      'template' => 'block--provus-card--provus-display-card-image-circle',
+      'base hook' => 'block'
+    ],
     'block__provus_card__provus_display_card_left' => [
       'template' => 'block--provus-card--provus-display-card-left',
+      'base hook' => 'block'
+    ],
+    'block__provus_card__provus_display_card_right' => [
+      'template' => 'block--provus-card--provus-display-card-right',
       'base hook' => 'block'
     ],
     'block__provus_card__provus_display_card_bg' => [
@@ -93,8 +117,24 @@ function provus_blocks_theme() {
       'template' => 'block--provus-stat-group',
       'base hook' => 'block'
     ],
+    'block__provus_stat_item' => [
+      'template' => 'block--provus-stat-item',
+      'base hook' => 'block'
+    ],
     'block__provus_divider_line' => [
       'template' => 'block--provus-divider-line',
+      'base hook' => 'block'
+    ],
+    'block__provus_group' => [
+      'template' => 'block--provus-group',
+      'base hook' => 'block'
+    ],
+    'block__provus_group__carousel' => [
+      'template' => 'block--provus-group--carousel',
+      'base hook' => 'block'
+    ],
+    'block__provus_group__featured_4' => [
+      'template' => 'block--provus-group--featured-4',
       'base hook' => 'block'
     ],
   ];
@@ -123,10 +163,13 @@ function provus_blocks_theme() {
      elseif ($block_type == 'provus_accordion') {
        _provus_preprocess_accordion($vars, $block);
      }
+     elseif ($block_type == 'provus_group') {
+       _provus_preprocess_group($vars, $block);
+     }
      elseif ($block_type == 'provus_stat_group') {
        _provus_preprocess_blocks($vars, $block, 'field_provus_items');
      }
-     if ($block_type == 'provus_list') {
+     elseif ($block_type == 'provus_list') {
        _provus_preprocess_blocks($vars, $block, 'field_provus_list_items');
        // Get list orientation display.
        $group_display = $block->get('field_provus_list_orientation')->value;
@@ -278,6 +321,44 @@ function _provus_preprocess_tabs(&$vars, $block) {
           }
         }
         $vars['items'][$key]['content'] = $blocks;
+      }
+    }
+  }
+}
+
+/**
+ * Preprocess function for group.
+ */
+function _provus_preprocess_group(&$vars, $block) {
+  // Get group display.
+  $group_display = $block->get('field_provus_group_display')->value;
+  $display_type = explode('_', $group_display);
+  $vars['group_number'] = !empty($display_type[1]) ? $display_type[1] : NULL;
+  // Get item display.
+  $vars['display_content'] = $block->get('field_provus_item_display')->value;
+  $view_builder = \Drupal::entityTypeManager()->getViewBuilder('block_content');
+  $storage = \Drupal::entityTypeManager()->getStorage('block_content');
+  $id_array = $block->get('field_provus_block_items')->getValue();
+  if (!empty($id_array)) {
+    foreach ($id_array as $key => $id) {
+      $entity = $storage->load($id['target_id']);
+      if (!empty($entity)) {
+        $block_build['content'] = $view_builder->view($entity, 'default');
+        // Add a custom variable to check in block preprocess.
+        $block_build['content']['#provus_group_item_display'] = $vars['display_content'];
+        if ($group_display == 'featured_4' && $key == 0) {
+          $block_build['content']['#provus_group_item_display'] = 'card';
+        }
+        elseif ($group_display == 'featured_4' && $key > 0) {
+          $block_build['content']['#provus_group_item_display'] = 'card_left';
+        }
+        provus_blocks_get_block($block_build, $entity);
+        if ($group_display == 'featured_4' && $key == 0) {
+          $vars['block_1'] = $block_build;
+        }
+        else {
+          $vars['blocks'][] = $block_build;
+        }
       }
     }
   }

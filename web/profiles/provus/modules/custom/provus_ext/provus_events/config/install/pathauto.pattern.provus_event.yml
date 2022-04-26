@@ -1,0 +1,21 @@
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+id: provus_event
+label: Event
+type: 'canonical_entities:node'
+pattern: 'events/[node:title]'
+selection_criteria:
+  704290c7-2bfb-4f59-91c0-5994ca62346d:
+    id: node_type
+    negate: false
+    uuid: 704290c7-2bfb-4f59-91c0-5994ca62346d
+    context_mapping:
+      node: node
+    bundles:
+      provus_event: provus_event
+selection_logic: and
+weight: -5
+relationships: {  }
