@@ -50,9 +50,9 @@
           {{ content.field_provus_header }}
         </div>
       {% endif %}
-      {% if content.field_provus_media_image|render %}
+      {% if content.field_provus_media_image %}
         <div class="card-img-top rounded-circle">
-          {{ content.field_provus_media_image }}
+          <img src="{{ file_url(content.field_provus_media_image.0['#item'].entity.uri.value | image_style('provus_circle_image')) }}" alt="{{ content.field_provus_media_image.0['#item'].alt }}" />
         </div>
       {% endif %}
       <div class="card-body">

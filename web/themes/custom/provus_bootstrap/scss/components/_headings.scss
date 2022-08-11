@@ -172,3 +172,80 @@ a {
     }
   }
 }
+
+// Heading block.
+.block-provus-heading {
+  h2,h3,h4,h5,h6 {
+    position: relative;
+    background: $white;
+    margin: rem-calc(60 0);
+    div.field {
+      position: relative;
+      background: $white;
+      display: inline-block;
+      z-index: 2;
+    }
+  }
+  .line-on {
+    h2,h3,h4,h5,h6 {
+      &:before {
+        width: 100%;
+        height: rem-calc(2);
+        top: 50%;
+        content: '';
+        background: $accent-shade;
+        z-index: 1;
+        position: absolute;
+      }
+    }
+  }
+  .header-align-left {
+    text-align: left;
+    h2,h3,h4,h5,h6 {
+      &:before {
+        left: 0;
+      }
+    }
+    div.field {
+      padding-right: rem-calc(60);
+    }
+  }
+  .header-align-right {
+    text-align: right;
+    div.field {
+      padding-left: rem-calc(60);
+    }
+    &.line-on {
+      h2,h3,h4,h5,h6 {
+        &:before {
+          right: 0;
+        }
+      }
+    }
+  }
+  .header-align-center {
+    width: 100%;
+    display: block;
+    margin-bottom: rem-calc(50);
+    .subheading {
+      text-align: center;
+    }
+    h2,h3,h4,h5,h6 {
+      text-align: center;
+      &:before {
+        left: 0;
+      }
+      div.field {
+        padding-left: rem-calc(60);
+        padding-right: rem-calc(60);
+      }
+    }
+  }
+  .subheading {
+    font-weight: 600;
+    font-size: rem-calc(22);
+    line-height: rem-calc(31);
+    color: $body-color;
+    margin-top: rem-calc(-20);
+  }
+}

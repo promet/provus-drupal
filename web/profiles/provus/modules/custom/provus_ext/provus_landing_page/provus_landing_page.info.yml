@@ -6,3 +6,4 @@ package: 'Provus'
 
 dependencies:
   - provus_blocks
+  - exclude_node_title

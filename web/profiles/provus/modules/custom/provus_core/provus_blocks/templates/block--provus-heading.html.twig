@@ -34,18 +34,20 @@
     'block',
     'block-' ~ configuration.provider|clean_class,
     'block-' ~ plugin_id|clean_class,
-    'block-align-' ~ content.field_provus_alignment[0]['#markup']|clean_class,
-    'block-decorative-line-' ~ content.field_provus_decorative_line[0]['#markup']|clean_class,
   ]
 %}
-
 <div{{ attributes.addClass(classes) }}>
-  {{ title_prefix }}
-  {% if label %}
-    <h2{{ title_attributes }}>{{ label }}</h2>
-  {% endif %}
-  {{ title_suffix }}
-  {% block content %}
-    <{{ content.field_provus_heading_level[0]['#markup'] }} class="title">{{ content.field_provus_title }}</{{ content.field_provus_heading_level[0]['#markup'] }}>
-  {% endblock %}
+  <div class="header-align-{{ content.field_provus_alignment.0 }} line-{{ content.field_provus_decorative_line[0]['#markup']|lower|striptags }}">
+    {{ title_prefix }}
+    {% if label %}
+      <h2{{ title_attributes }}>{{ label }}</h2>
+    {% endif %}
+    {{ title_suffix }}
+    {% block content %}
+      <{{ content.field_provus_heading_level[0]['#markup'] }} class="title">{{ content.field_provus_title }}</{{ content.field_provus_heading_level[0]['#markup'] }}>
+      <div class="subheading">
+        {{ content.field_provus_sub_title }}
+      </div>
+    {% endblock %}
+  </div>
 </div>

@@ -25,6 +25,42 @@ function provus_core_help($route_name, RouteMatchInterface $route_match) {
 }
 
 /**
+ * Implements hook_theme().
+ */
+function provus_core_theme() {
+  return [
+    'node__card' => [
+      'template' => 'node--card',
+      'base hook' => 'node'
+    ],
+    'node__card_basic' => [
+      'template' => 'node--card-basic',
+      'base hook' => 'node'
+    ],
+    'node__card_basic_plus' => [
+      'template' => 'node--card-basic-plus',
+      'base hook' => 'node'
+    ],
+    'node__card_bg' => [
+      'template' => 'node--card-bg',
+      'base hook' => 'node'
+    ],
+    'node__card_image_circle' => [
+      'template' => 'node--card-image-circle',
+      'base hook' => 'node'
+    ],
+    'node__card_left' => [
+      'template' => 'node--card-left',
+      'base hook' => 'node'
+    ],
+    'node__card_right' => [
+      'template' => 'node--card-right',
+      'base hook' => 'node'
+    ],
+  ];
+}
+
+/**
  * Implements hook_entity_view_display_alter().
  */
 function provus_core_entity_view_display_alter(EntityViewDisplayInterface $display, array $context) {
