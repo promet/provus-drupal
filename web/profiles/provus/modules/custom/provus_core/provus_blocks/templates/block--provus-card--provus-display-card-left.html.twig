@@ -50,17 +50,15 @@
         {{ content.field_provus_header }}
       </div>
     {% endif %}
-      {% if cardstyle.horizontal %}
-        <div class="row">
-      {% endif %}
+      <div class="row">
         {% if content.field_provus_media_image|render %}
-          <div class="{{ (cardstyle.horizontal) ? 'col-md-4' : '' }}">
+          <div class="col-md-4">
             <div class="card-img img-fluid rounded-start">
               {{ content.field_provus_media_image }}
             </div>
           </div>
         {% endif %}
-        <div class="{{ (cardstyle.horizontal) ? 'col-md-8' : '' }}">
+        <div class="col-md-8">
           <div class="card-body">
             {% if content.field_provus_title|render %}
             <h3 class="card-title">{{ content.field_provus_title }}</h3>
@@ -71,9 +69,7 @@
             {{ content|without('field_provus_title', 'field_provus_body', 'field_provus_media_image', 'field_provus_header') }}
           </div>
         </div>
-      {% if cardstyle.horizontal %}
-        </div>
-      {% endif %}
+      </div>
     </div>
   {% endblock %}
 </div>

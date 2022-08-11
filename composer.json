@@ -75,6 +75,9 @@
         "patches": {
             "drupal/auto_entitylabel": {
                 "Integration with Layout Builder for custom block types [3065687]": "https://www.drupal.org/files/issues/2021-07-21/auto_entitylabel-layout_builder_component_title-3065687-16.patch"
+            },
+            "drupal/exclude_node_title": {
+                "Deployment erases excluded-node-titles [2974973]": "https://www.drupal.org/files/issues/2018-06-20/2974973-state_api-3.patch"
             }
         }
     },

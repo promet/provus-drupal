@@ -33,6 +33,10 @@ function provus_blocks_theme_suggestions_block_alter(&$suggestions, $vars) {
   if (!empty($vars['elements']['content']['#block_content'])) {
     $block = $vars['elements']['content']['#block_content'];
     $block_type = $block->bundle();
+    // Treat group auto the same as group.
+    if ($block_type == 'provus_group_automatic') {
+      $block_type = 'provus_group';
+    }
     $base_suggestion = 'block__' . $block_type;
     $suggestions[] = $base_suggestion;
     // Add view mode to suggestions.
@@ -43,6 +47,14 @@ function provus_blocks_theme_suggestions_block_alter(&$suggestions, $vars) {
     if ($block_type == 'provus_card') {
       $display_mode = !empty($vars['elements']['content']['#provus_group_item_display']) ? $vars['elements']['content']['#provus_group_item_display'] : $block->get('field_provus_item_display')->value;
       $suggestions[] = $base_suggestion . '__provus_display_' . $display_mode;
+    }
+    // For provus group, add the group display to suggestions.
+    if ($block_type == 'provus_group') {
+      // Get group display.
+      $group_display = $block->get('field_provus_group_display')->value;
+      $display_type = explode('_', $group_display);
+      $suggestions[] = $base_suggestion . '__' . $group_display;
+      $suggestions[] = $base_suggestion . '__' . $display_type[0];
     }
   }
   return $suggestions;
@@ -59,6 +71,10 @@ function provus_blocks_theme() {
     ],
     'block__provus_heading' => [
       'template' => 'block--provus-heading',
+      'base hook' => 'block'
+    ],
+    'block__provus_files_list' => [
+      'template' => 'block--provus-files-list',
       'base hook' => 'block'
     ],
     'block__provus_list' => [
@@ -160,11 +176,14 @@ function provus_blocks_theme() {
      elseif ($block_type == 'provus_tabs') {
        _provus_preprocess_tabs($vars, $block);
      }
-     elseif ($block_type == 'provus_accordion') {
+     elseif ($block_type == 'provus_accordion' || $block_type == 'provus_faq_group') {
        _provus_preprocess_accordion($vars, $block);
      }
      elseif ($block_type == 'provus_group') {
        _provus_preprocess_group($vars, $block);
+     }
+     elseif ($block_type == 'provus_group_automatic') {
+       _provus_preprocess_group_auto($vars, $block);
      }
      elseif ($block_type == 'provus_stat_group') {
        _provus_preprocess_blocks($vars, $block, 'field_provus_items');
@@ -206,13 +225,25 @@ function provus_blocks_form_alter(&$form, FormStateInterface $form_state, $form_
 }
 
 /**
- * Returns an array of names for card display modes.
+ * Returns an array of card display modes for field_provus_item_display.
  */
 function provus_blocks_item_display_allowed_values() {
   $options = [];
   $provus_displays = \Drupal::config('provus.displays.card_settings')->get('displays');
   foreach ($provus_displays as $key => $display) {
     $options[$key] = $display['name'];
+  }
+  return $options;
+}
+
+/**
+ * Returns an array of content types for field_provus_content_type.
+ */
+function provus_blocks_group_content_type_allowed_values() {
+  $options = [];
+  $types = \Drupal::service('entity_type.bundle.info')->getBundleInfo('node');
+  foreach ($types as $key => $display) {
+    $options[$key] = $display['label'];
   }
   return $options;
 }
@@ -336,32 +367,42 @@ function _provus_preprocess_group(&$vars, $block) {
   $vars['group_number'] = !empty($display_type[1]) ? $display_type[1] : NULL;
   // Get item display.
   $vars['display_content'] = $block->get('field_provus_item_display')->value;
-  $view_builder = \Drupal::entityTypeManager()->getViewBuilder('block_content');
-  $storage = \Drupal::entityTypeManager()->getStorage('block_content');
+  // Get content.
   $id_array = $block->get('field_provus_block_items')->getValue();
+  // Format content.
   if (!empty($id_array)) {
-    foreach ($id_array as $key => $id) {
-      $entity = $storage->load($id['target_id']);
-      if (!empty($entity)) {
-        $block_build['content'] = $view_builder->view($entity, 'default');
-        // Add a custom variable to check in block preprocess.
-        $block_build['content']['#provus_group_item_display'] = $vars['display_content'];
-        if ($group_display == 'featured_4' && $key == 0) {
-          $block_build['content']['#provus_group_item_display'] = 'card';
-        }
-        elseif ($group_display == 'featured_4' && $key > 0) {
-          $block_build['content']['#provus_group_item_display'] = 'card_left';
-        }
-        provus_blocks_get_block($block_build, $entity);
-        if ($group_display == 'featured_4' && $key == 0) {
-          $vars['block_1'] = $block_build;
-        }
-        else {
-          $vars['blocks'][] = $block_build;
-        }
-      }
-    }
+    $storage = \Drupal::entityTypeManager()->getStorage('block_content');
+    $view_builder = \Drupal::entityTypeManager()->getViewBuilder('block_content');
+    _provus_blocks_groups_format_content('block', $id_array, $storage, $view_builder, $group_display, $vars);
   }
+}
+
+/**
+ * Preprocess function for group automatic.
+ */
+function _provus_preprocess_group_auto(&$vars, $block) {
+  // Get group display.
+  $group_display = $block->get('field_provus_group_display')->value;
+  $display_type = explode('_', $group_display);
+  $vars['group_number'] = !empty($display_type[1]) ? $display_type[1] : NULL;
+  // Get item display.
+  $vars['display_content'] = $block->get('field_provus_item_display')->value;
+  // Get content.
+  $content_type = $block->get('field_provus_content_type')->value;
+  $options['count'] = $block->get('field_provus_count')->value;
+  $id_array = _provus_blocks_groups_automatic_get_ids($content_type, $options);
+  $id_array = array_values($id_array);
+  // Format content.
+  if (!empty($id_array)) {
+    $storage = \Drupal::entityTypeManager()->getStorage('node');
+    $view_builder = \Drupal::entityTypeManager()->getViewBuilder('node');
+    _provus_blocks_groups_format_content('node', $id_array, $storage, $view_builder, $group_display, $vars);
+  }
+
+  // Set cachetags to use node_list.
+  $cache_tags = $block->getCacheTags();
+  $cache_tags[] = 'node_list';
+  $vars['#cache']['tags'] = $cache_tags;
 }
 
 /**
@@ -383,4 +424,72 @@ function _provus_preprocess_blocks(&$vars, $block, $fieldname) {
       }
     }
   }
+}
+
+/**
+ * Formats content for the group and group automatic blocks.
+ *
+ * @param string $type
+ *   The entity type.
+ * @param array $id_array
+ *   An array of entity ids.
+ * @param object $storage
+ *   The entity storage object.
+ * @param object $view_builder
+ *   The entity view_builder object.
+ * @param string $group_display
+ *   The type of group display.
+ * @param array $vars
+ *   The preprocess variables array.
+ */
+function _provus_blocks_groups_format_content($type, $id_array, $storage, $view_builder, $group_display, &$vars) {
+  foreach ($id_array as $key => $id) {
+    $id = !empty($id['target_id']) ? $id['target_id'] : $id;
+    $entity = $storage->load($id);
+    if (!empty($entity)) {
+      $item_display = $vars['display_content'];
+      if ($group_display == 'featured_4' && $key == 0) {
+        $item_display = 'card';
+      }
+      elseif ($group_display == 'featured_4' && $key > 0) {
+        $item_display = 'card_left';
+      }
+      if ($type == 'block') {
+        $block_build['content'] = $view_builder->view($entity, 'default');
+        // Add a custom variable to check in block preprocess.
+        $block_build['content']['#provus_group_item_display'] = $item_display;
+        provus_blocks_get_block($block_build, $entity);
+      }
+      elseif ($type == 'node') {
+        $block_build = $view_builder->view($entity, $item_display);
+      }
+      if ($group_display == 'featured_4' && $key == 0) {
+        $vars['block_1'] = $block_build;
+      }
+      else {
+        $vars['blocks'][] = $block_build;
+      }
+    }
+  }
+}
+
+/**
+ * Query for automatic group content option.
+ *
+ * @param string $content_type
+ *   The node bundle.
+ * @param int $count
+ *   The number of items to get.
+ *
+ * @return array
+ *   An array of node ids.
+ */
+function _provus_blocks_groups_automatic_get_ids($content_type, $options) {
+  $query = \Drupal::entityQuery('node')
+    ->condition('status', 1)
+    ->condition('type', $content_type);
+  $query->range(0, $options['count']);
+  $query->sort('created', 'DESC');
+  $ids = $query->execute();
+  return $ids;
 }

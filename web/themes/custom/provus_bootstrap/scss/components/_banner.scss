@@ -61,7 +61,7 @@
   @include breakout;
 
   padding: rem-calc(150 0);
-  background-size: cover;
+  background-size: cover !important;
   &-inner {
     .large-banner-content {
       h1, p {

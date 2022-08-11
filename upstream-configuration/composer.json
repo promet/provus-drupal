@@ -105,10 +105,12 @@
         "drupal/addtoany": "^1.16",
         "drupal/formtips": "^1.5",
         "drupal/fontawesome": "^2.22",
-        "drupal/bootstrap_site_alert": "^2.0@beta"
+        "drupal/bootstrap_site_alert": "^2.0@beta",
+        "drupal/exclude_node_title": "1.3",
+        "drupal/sitemap": "2.x-dev"
     },
     "extra": {
-      "_README": "Do not edit this config file, Use the composer.json in the project root. See https://provus.io/docs/composer for more information."
+        "_README": "Do not edit this config file, Use the composer.json in the project root. See https://provus.io/docs/composer for more information."
     },
     "config": {
         "allow-plugins": {

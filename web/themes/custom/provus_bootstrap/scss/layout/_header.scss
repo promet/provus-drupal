@@ -39,14 +39,14 @@
     position: relative;
     z-index: 99;
     width: rem-calc(50);
-    .fa-times {
+    .fa-xmark {
       display: none;
     }
     &[aria-expanded="true"] {
-      .fa-times {
+      .fa-xmark {
         display: inline-block;
       }
-      .fa-search {
+      .fa-magnifying-glass {
         display: none;
       }
     }

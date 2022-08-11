@@ -1,24 +1,22 @@
 displays:
   card:
     name: 'Default'
-    cardstyle: { }
+    cardstyle: {  }
   card_image_circle:
     name: 'Image Circle'
-    cardstyle: { }
+    cardstyle: {  }
   card_left:
     name: 'Image Left'
-    cardstyle:
-      horizontal: true
+    cardstyle: {  }
   card_right:
     name: 'Image Right'
-    cardstyle:
-      horizontal: true
+    cardstyle: {  }
   card_bg:
     name: 'Image Background'
-    cardstyle: { }
+    cardstyle: {  }
   card_basic:
     name: 'Basic'
-    cardstyle: { }
+    cardstyle: {  }
   card_basic_plus:
     name: 'Basic Plus'
-    cardstyle: { }
+    cardstyle: {  }

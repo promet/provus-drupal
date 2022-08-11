@@ -8,10 +8,10 @@ label: Event
 type: 'canonical_entities:node'
 pattern: 'events/[node:title]'
 selection_criteria:
-  704290c7-2bfb-4f59-91c0-5994ca62346d:
-    id: node_type
+  ad1d8558-db95-4d35-9e06-8eff63b811f6:
+    id: 'entity_bundle:node'
     negate: false
-    uuid: 704290c7-2bfb-4f59-91c0-5994ca62346d
+    uuid: ad1d8558-db95-4d35-9e06-8eff63b811f6
     context_mapping:
       node: node
     bundles:
