@@ -34,15 +34,10 @@
   'block',
   'block-' ~ configuration.provider|clean_class,
   'block-' ~ plugin_id|clean_class,
-  'block-' ~ 'cta'|clean_class,
+  'image-location-' ~ content.field_image_position['#items'].getString(),
 ]
 %}
-{%
-  set backgroundImage = ""
-%}
-{%
-  set backgroundImagePath = ""
-%}
+
 <div{{ attributes.addClass(classes) }}>
   {{ title_prefix }}
   {% if label %}
@@ -50,35 +45,35 @@
   {% endif %}
   {{ title_suffix }}
   {% block content %}
-    {% if (file_url(content.field_provus_cta_background_img['#items'].entity.uri.value)) is not empty %}
-        {%
-          set backgroundImage = 'has-bg-image'
-        %}
-        {%
-          set backgroundImagePath = file_url(content.field_provus_cta_background_img['#items'].entity.uri.value)
-        %}
-        {% endif %}
-        <div class="cta-wrapper {{ backgroundImage }} {{ content.field_provus_cta_background_clr.0 }}">
-        {% if (file_url(content.field_provus_cta_background_img['#items'].entity.uri.value)) is not empty %}
-          <div class="cta-bg-image-container" style="background-image: url({{ backgroundImagePath }})"></div>
-        {% endif %}
-
-      {% if content.field_provus_sub_title|render %}
-        <h3 class="cta-sub-title">{{ content.field_provus_sub_title }}</h3>
-      {% endif %}
-      {% if content.field_provus_title|render %}
-        <h2 class="cta-title">{{ content.field_provus_title }}</h2>
-      {% endif %}
-      {% if content.field_provus_body|render %}
-        <div class="cta-body">
-          {{ content.field_provus_body }}
+    <div{{ content_attributes.addClass('card card-testimonial') }}>
+      <div class="row">
+        <div class="col-lg-6">
+          <div class="testimonial-content">
+            {% if content.field_provus_testimonial_body.0 %}
+              <div class="testimonial-body">
+                {{ content.field_provus_testimonial_body.0|raw }}
+              </div>
+            {% endif %}
+            {% if content.field_provus_testimonial_name.0 %}
+              <div class="testimonial-name">
+                {{ content.field_provus_testimonial_name }}
+              </div>
+            {% endif %}
+            {% if content.field_provus_testimonial_role.0 %}
+              <div class="testimonial-role">
+                {{ content.field_provus_testimonial_role }}
+              </div>
+            {% endif %}
+          </div>
         </div>
-      {% endif %}
-      {% if content.field_provus_links|render %}
-        <div class="cta-links">
-          {{ content.field_provus_links }}
+        <div class="col-lg-6">
+          {% if content.field_provus_media_image.0 %}
+            <div class="testimonial-image">
+              {{ content.field_provus_media_image }}
+            </div>
+          {% endif %}
         </div>
-      {% endif %}
+      </div>
     </div>
   {% endblock %}
 </div>
